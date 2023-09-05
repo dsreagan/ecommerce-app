@@ -4,7 +4,6 @@ const {
   verifyTokenAndAdmin,
 } = require("../services/verifyToken")
 const Product = require("../models/Product")
-const { query } = require("express")
 
 // Create
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
