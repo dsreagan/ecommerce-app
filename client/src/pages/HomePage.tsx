@@ -1,8 +1,8 @@
+import useLamaStore from "../store"
 
 export default function HomePage() {
-  return (
-    <div>
-      Home Page
-    </div>
-  )
+  const user = useLamaStore((s) => s.user)
+
+
+  return <div>{user?.id}</div>
 }
