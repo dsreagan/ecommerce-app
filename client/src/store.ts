@@ -4,8 +4,8 @@ import User from "./entities/User"
 
 interface LamaStore {
   user?: User
-  cart: Cart
   setUser: (user: User) => void
+  cart: Cart
   setCart: (cart: Cart) => void
 }
 

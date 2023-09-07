@@ -1,5 +1,4 @@
 import axios from "axios"
-import useLamaStore from "../store"
 
 // useRegisterUser({
 //   username: "example60",
@@ -9,42 +8,40 @@ import useLamaStore from "../store"
 
 interface Props {
   username: string
-  email: string
   password: string
 }
 
-const useRegisterUser = ({ username, email, password }: Props) => {
-  const setUser = useLamaStore(s => s.setUser)
-
+const login = ({ username, password }: Props) => {
   const data = JSON.stringify({
     username: username,
-    email: email,
     password: password,
   })
 
   const config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: `http://localhost:5000/api/auth/register`,
+    url: `https://hot-lama-api.onrender.com/api/auth/login`,
     headers: {
       "Content-Type": "application/json",
     },
     data: data,
   }
 
-  axios
+  return axios
     .request(config)
     .then((res) => {
-      setUser({
+      console.log(JSON.stringify(res.data))
+      return {
         id: res.data._id,
         username: res.data.username,
         email: res.data.email,
         isAdmin: res.data.isAdmin,
-      })
+        accessToken: res.data.accessToken,
+      }
     })
     .catch((error) => {
-      console.log(error)
+      throw new Error(error)
     })
 }
 
-export default useRegisterUser
+export default login

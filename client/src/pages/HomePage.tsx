@@ -1,8 +1,10 @@
-import useLamaStore from "../store"
+import AuthModal from "../components/AuthModal"
 
 export default function HomePage() {
-  const user = useLamaStore((s) => s.user)
-
-
-  return <div>{user?.id}</div>
+  
+  return (
+    <>
+      <AuthModal />
+    </>
+  )
 }
