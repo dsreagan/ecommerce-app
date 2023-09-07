@@ -5,17 +5,25 @@ const User = require("../models/User")
 
 // Registration
 router.post("/register", async (req, res, next) => {
-
-  const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASSWORD_KEY
-    ).toString(),
-  })
-
   try {
+    // check first to see if the username or email are already registered
+    const user = await User.findOne({
+      $or: [{ username: req.body.username }, { email: req.body.email }],
+    })
+    if (user && user.username === req.body.username)
+      res.status(500).json("Username already exists.")
+    else if (user && user.email === req.body.email)
+      res.status(500).json("Email is already registered.")
+
+    const newUser = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: CryptoJS.AES.encrypt(
+        req.body.password,
+        process.env.PASSWORD_KEY
+      ).toString(),
+    })
+
     const savedUser = await newUser.save()
     const { password, ...userInfo } = savedUser._doc
     res.status(201).json({ ...userInfo })
