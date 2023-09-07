@@ -4,8 +4,7 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/User")
 
 // Registration
-router.post("/register", async (req, res) => {
-  // error handle by checking if these fields exist and send a response if not
+router.post("/register", async (req, res, next) => {
 
   const newUser = new User({
     username: req.body.username,
@@ -21,12 +20,12 @@ router.post("/register", async (req, res) => {
     const { password, ...userInfo } = savedUser._doc
     res.status(201).json({ ...userInfo })
   } catch (err) {
-    res.status(500).json(err)
+    next(err)
   }
 })
 
 // Login
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username })
     !user && res.status(401).json("Wrong username.")
@@ -48,7 +47,7 @@ router.post("/login", async (req, res) => {
     const { password, ...userInfo } = user._doc
     res.status(200).json({ ...userInfo, accessToken })
   } catch (err) {
-    res.status(500).json(err)
+    next(err)
   }
 })
 

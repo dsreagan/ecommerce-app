@@ -6,18 +6,18 @@ const {
 const Order = require("../models/Order")
 
 // Create
-router.post("/", verifyTokenAndAuthorization, async (req, res) => {
+router.post("/", verifyTokenAndAuthorization, async (req, res, next) => {
   const newOrder = new Order(req.body)
   try {
     const savedOrder = await newOrder.save()
     res.status(200).json(savedOrder)
   } catch (err) {
-    res.status(500).json(err)
+    next(err)
   }
 })
 
 // Update
-router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => {
+router.put("/update/:id", verifyTokenAndAdmin, async (req, res, next) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
       req.params.id,
@@ -28,42 +28,50 @@ router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => {
     )
     res.status(200).json(updatedOrder)
   } catch (err) {
-    res.status(500).json(err)
+    next(err)
   }
 })
 
 // Delete
-router.delete("/delete/:id", verifyTokenAndAuthorization, async (req, res) => {
-  try {
-    await Order.findByIdAndDelete(req.params.id)
-    res.status(200).json("Order deleted.")
-  } catch (err) {
-    res.status(500).json(err)
+router.delete(
+  "/delete/:id",
+  verifyTokenAndAuthorization,
+  async (req, res, next) => {
+    try {
+      await Order.findByIdAndDelete(req.params.id)
+      res.status(200).json("Order deleted.")
+    } catch (err) {
+      next(err)
+    }
   }
-})
+)
 
 // Get Order
-router.get("/find/:userid", verifyTokenAndAuthorization, async (req, res) => {
-  try {
-    const orders = await Order.findOne({ userId: req.params.userid })
-    res.status(200).json(orders)
-  } catch (err) {
-    res.status(500).json(err)
+router.get(
+  "/find/:userid",
+  verifyTokenAndAuthorization,
+  async (req, res, next) => {
+    try {
+      const orders = await Order.findOne({ userId: req.params.userid })
+      res.status(200).json(orders)
+    } catch (err) {
+      next(err)
+    }
   }
-})
+)
 
 // Get All Orders
-router.get("/all", verifyTokenAndAdmin, async (req, res) => {
+router.get("/all", verifyTokenAndAdmin, async (req, res, next) => {
   try {
     const orders = await Order.find()
     res.status(200).json(orders)
   } catch (err) {
-    res.status(500).json(err)
+    next(err)
   }
 })
 
 // Get Monthly Income
-router.get("/income", verifyTokenAndAdmin, async (req, res) => {
+router.get("/income", verifyTokenAndAdmin, async (req, res, next) => {
   const date = new Date()
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1))
   const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1))
@@ -86,7 +94,7 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
     ])
     res.status(200).json(income)
   } catch (err) {
-    res.status(500).json(err)
+    next(err)
   }
 })
 
