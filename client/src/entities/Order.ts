@@ -1,4 +1,5 @@
 export default interface Order {
+  id: string
   userId: string
   products: {
     productId: string

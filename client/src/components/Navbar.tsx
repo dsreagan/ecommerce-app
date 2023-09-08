@@ -4,9 +4,10 @@ import SearchBar from "./SearchBar"
 
 interface Props {
   openAuthModal: () => void
+  openCartDrawer: () => void
 }
 
-const Navbar = ({ openAuthModal }: Props) => {
+const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
   return (
     <Grid
       templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
@@ -43,11 +44,11 @@ const Navbar = ({ openAuthModal }: Props) => {
             marginRight={{ base: "80px", sm: "120px" }}
             fontSize="lg"
             fontWeight="normal"
-            onClick={() => openAuthModal()}
+            onClick={openAuthModal}
           >
             Sign In
           </Button>
-          <CartIcon />
+          <CartIcon onClick={openCartDrawer} />
         </Flex>
       </GridItem>
     </Grid>

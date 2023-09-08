@@ -52,7 +52,7 @@ router.delete(
 
 // Get Cart
 router.get(
-  "/find/:userid",
+  "/:userid",
   verifyTokenAndAuthorization,
   async (req, res, next) => {
     try {
