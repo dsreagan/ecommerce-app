@@ -3,7 +3,7 @@ import { IconButton, Input, InputGroup, InputRightElement } from "@chakra-ui/rea
 
 const SearchBar = () => {
   return (
-    <InputGroup w="15%" size="xs">
+    <InputGroup w="50%" size="xs">
       <Input />
       <InputRightElement>
         <IconButton
