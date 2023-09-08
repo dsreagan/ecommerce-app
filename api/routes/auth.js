@@ -11,9 +11,9 @@ router.post("/register", async (req, res, next) => {
       $or: [{ username: req.body.username }, { email: req.body.email }],
     })
     if (user && user.username === req.body.username)
-      res.status(500).json("Username already exists.")
+      res.status(500).json("Username already exists")
     else if (user && user.email === req.body.email)
-      res.status(500).json("Email is already registered.")
+      res.status(500).json("Email is already registered")
 
     const newUser = new User({
       username: req.body.username,
@@ -36,14 +36,14 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username })
-    !user && res.status(401).json("Wrong username.")
+    !user && res.status(401).json("This username is not registered")
     const hashedPW = CryptoJS.AES.decrypt(
       user.password,
       process.env.PASSWORD_KEY
     )
     const storedPassword = hashedPW.toString(CryptoJS.enc.Utf8)
     req.body.password !== storedPassword &&
-      res.status(401).json("Wrong Password.")
+      res.status(401).json("The password you entered is incorrect")
     const accessToken = jwt.sign(
       {
         id: user._id,

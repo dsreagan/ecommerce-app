@@ -1,17 +1,11 @@
 import axios from "axios"
 
-// useRegisterUser({
-//   username: "example60",
-//   email: "example60@gmail.com",
-//   password: "expw",
-// })
-
 interface Props {
   username: string
   password: string
 }
 
-const login = ({ username, password }: Props) => {
+const loginUser = ({ username, password }: Props) => {
   const data = JSON.stringify({
     username: username,
     password: password,
@@ -20,7 +14,9 @@ const login = ({ username, password }: Props) => {
   const config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: `https://hot-lama-api.onrender.com/api/auth/login`,
+    // url: "https://hot-lama-api.onrender.com/api/auth/login",
+    //Until you catch the errors properly on api
+    url: "http://localhost:5000/api/auth/login",
     headers: {
       "Content-Type": "application/json",
     },
@@ -44,4 +40,4 @@ const login = ({ username, password }: Props) => {
     })
 }
 
-export default login
+export default loginUser

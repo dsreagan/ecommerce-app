@@ -1,56 +1,64 @@
-import { Button, Card, Input } from "@chakra-ui/react"
-import { ChangeEvent, useState } from "react"
-import login from "../auth/login"
+import { Modal, ModalOverlay } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
+import AuthInput from "../entities/AuthInput"
+import AuthModalLogin from "./AuthModalLogin"
+import AuthModalRegister from "./AuthModalRegister"
 import useLamaStore from "../store"
+import authenticateUser from "../auth/authenticateUser"
 
 export default function AuthModal() {
-  const { user, setUser } = useLamaStore()
-  const [input, setInput] = useState({ username: "", password: "" })
-  const [error, setError] = useState(false)
-  const errorMessage = "Wrong username or password."
+  const setUser = useLamaStore((s) => s.setUser)
+  const [isOpen, setIsOpen] = useState(true)
+  const [action, setAction] = useState<"register" | "login">("login")
+  const [submit, setSubmit] = useState(false)
+  const [input, setInput] = useState<AuthInput>({} as AuthInput)
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setError(false)
-    setInput((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }))
-  }
-
-  const handleSubmit = () => {
-
-    // ! NEED TO CATCH AN ERROR HERE !
-
-    login({ username: input.username, password: input.password }).then(
-      (res) => {
-        setUser({
-          username: res?.username,
-          email: res?.email,
-          id: res?.id,
-          isAdmin: res?.isAdmin,
-          accessToken: res?.accessToken,
-        })
-      }
-    ).catch(() => setError(true))
-  }
+  useEffect(() => {
+    if (submit) {
+      authenticateUser(input, action).then((res) => {
+        // check if response is error message or data
+        if (typeof res === "string") {
+          setErrorMessage(res)
+          setSubmit(false)
+        } else if (res === undefined) {
+          setErrorMessage("Something went wrong. Please try again.")
+          setSubmit(false)
+        } else {
+          setUser({
+            id: res._id,
+            username: res.username,
+            email: res.email,
+            isAdmin: res.isAdmin,
+            accessToken: res.accessTokens,
+          })
+          setIsOpen(false)
+        }
+      })
+    }
+  }, [submit, action, input, setUser])
 
   return (
-    <Card>
-      <Input
-        placeholder="username"
-        name="username"
-        value={input.username}
-        onChange={handleChange}
-      />
-      <Input
-        placeholder="password"
-        name="password"
-        value={input.password}
-        onChange={handleChange}
-      />
-      <Button onClick={handleSubmit}>Submit</Button>
-      {user?.username}
-      {error && <p>{errorMessage}</p>}
-    </Card>
+    <Modal isOpen={isOpen} onClose={() => {}} size="md" isCentered>
+      <ModalOverlay />
+      {action === "login" && (
+        <AuthModalLogin
+          setAction={setAction}
+          setSubmit={setSubmit}
+          setInput={setInput}
+          setResponseErrorMessage={setErrorMessage}
+          responseErrorMessage={errorMessage}
+        />
+      )}
+      {action === "register" && (
+        <AuthModalRegister
+          setAction={setAction}
+          setSubmit={setSubmit}
+          setInput={setInput}
+          setResponseErrorMessage={setErrorMessage}
+          responseErrorMessage={errorMessage}
+        />
+      )}
+    </Modal>
   )
 }
