@@ -50,7 +50,7 @@ export default function AuthModalRegister({
   const handleSubmit = () => {
     if (formData.username.length < 1) {
       setUsernameError(true)
-    } else if (formData.email.length < 1 || !formData.email.includes("@")) {
+    } else if (formData.email.length < 5 || !formData.email.includes("@")) {
       setEmailError(true)
     } else if (
       formData.password.length < 1 ||
