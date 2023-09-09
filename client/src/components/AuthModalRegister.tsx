@@ -122,6 +122,7 @@ export default function AuthModalRegister({
             <Text>
               Already have an account?{" "}
               <Button
+                variant="link"
                 onClick={() => {
                   setResponseErrorMessage("")
                   setAction("login")

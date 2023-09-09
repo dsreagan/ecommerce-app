@@ -1,11 +1,22 @@
+import useLamaStore from "../store"
 import { Box, IconButton, Text } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
+import { useEffect, useState } from "react"
 
 interface Props {
   onClick: () => void
 }
 
 const CartIcon = ({ onClick }: Props) => {
+  const cart = useLamaStore((s) => s.cart)
+  const [numItems, setNumItems] = useState(0)
+
+  useEffect(() => {
+    let count = 0
+    cart.items.forEach((i) => (count += i.quantity))
+    setNumItems(count)
+  }, [cart])
+
   return (
     <Box overflow="visible" position="relative">
       <IconButton
@@ -26,7 +37,7 @@ const CartIcon = ({ onClick }: Props) => {
         fontSize="2xs"
         zIndex="0"
       >
-        (1)
+        ({numItems})
       </Text>
     </Box>
   )

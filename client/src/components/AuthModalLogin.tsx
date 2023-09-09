@@ -89,6 +89,7 @@ export default function AuthModalLogin({
             <Text>
               Don't have an account?{" "}
               <Button
+                variant="link"
                 onClick={() => {
                   setResponseErrorMessage("")
                   setAction("register")

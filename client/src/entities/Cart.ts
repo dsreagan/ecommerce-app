@@ -1,7 +1,9 @@
 export default interface Cart {
   userId?: string
-  products: {
+  items: {
+    title: string
     id: string
+    price: number
     quantity: number
   }[]
 }
