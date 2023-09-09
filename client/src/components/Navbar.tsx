@@ -14,8 +14,6 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
       paddingX={{ base: "5px", sm: "10px" }}
       h="70px"
       w="100%"
-      pos="fixed"
-      top={0}
     >
       <Show above="sm">
         <GridItem>

@@ -24,7 +24,7 @@ const CartDrawer = ({ isOpen, onClose }: Props) => {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Cart Header</DrawerHeader>
+        <DrawerHeader>Your Cart</DrawerHeader>
         <DrawerBody>
           <CartItemsContainer />
         </DrawerBody>
