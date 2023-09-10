@@ -1,7 +1,13 @@
+import ProductGrid from "../components/ProductGrid"
+import HeroSlider from "../components/HeroSlider"
 
 const HomePage = () => {
-
-  return <>hello mate</>
+  return (
+    <>
+      <HeroSlider />
+      <ProductGrid />
+    </>
+  )
 }
 
 export default HomePage

@@ -20,8 +20,8 @@ export default function Layout() {
 
   return (
     <>
-      <Box w="100%" pos="fixed" top={0} bg="lightblue">
-        <WarningBanner />
+      <Box w="100%" pos="fixed" top={0}>
+        {/* <WarningBanner /> */}
         <Navbar openAuthModal={openAuthModal} openCartDrawer={openCartDrawer} />
       </Box>
       <Box paddingY={16} paddingX={5}>
