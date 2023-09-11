@@ -3,11 +3,11 @@ import { HStack, IconButton, Text } from "@chakra-ui/react"
 
 interface Props {
   quantity: number
-  addToCart: () => void
+  addAnotherToCart: () => void
   subtractFromCart: () => void
 }
 
-const CartButtonGroup = ({ quantity, addToCart, subtractFromCart }: Props) => {
+const CartButtonGroup = ({ quantity, addAnotherToCart, subtractFromCart }: Props) => {
   return (
     <HStack border="1px solid gray">
       {quantity === 1 ? (
@@ -34,7 +34,7 @@ const CartButtonGroup = ({ quantity, addToCart, subtractFromCart }: Props) => {
         icon={<AddIcon />}
         size="xs"
         borderRadius={0}
-        onClick={() => addToCart()}
+        onClick={() => addAnotherToCart()}
       />
     </HStack>
   )

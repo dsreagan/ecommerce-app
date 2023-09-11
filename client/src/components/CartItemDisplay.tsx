@@ -9,7 +9,8 @@ interface Props {
 }
 
 const CartItemDisplay = ({ item }: Props) => {
-  const { addToCart, subtractFromCart, removeFromCart } = useLamaStore()
+  const { onAddAnotherToCart, subtractFromCart, removeFromCart } =
+    useLamaStore()
 
   useEffect(() => {
     if (item.quantity < 1) removeFromCart(item)
@@ -24,7 +25,7 @@ const CartItemDisplay = ({ item }: Props) => {
         </HStack>
         <CartButtonGroup
           quantity={item.quantity}
-          addToCart={() => addToCart(item)}
+          addAnotherToCart={() => onAddAnotherToCart(item)}
           subtractFromCart={() => subtractFromCart(item)}
         />
       </VStack>

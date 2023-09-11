@@ -7,11 +7,13 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   HStack,
   Text,
 } from "@chakra-ui/react"
 import { ShoppingCartCheckout } from "@mui/icons-material"
 import CartItemsContainer from "./CartItemsContainer"
+import useLamaStore from "../store"
 
 interface Props {
   isOpen: boolean
@@ -19,6 +21,8 @@ interface Props {
 }
 
 const CartDrawer = ({ isOpen, onClose }: Props) => {
+  const cart = useLamaStore((s) => s.cart)
+
   return (
     <Drawer isOpen={isOpen} onClose={onClose}>
       <DrawerOverlay />
@@ -28,14 +32,22 @@ const CartDrawer = ({ isOpen, onClose }: Props) => {
         <DrawerBody>
           <CartItemsContainer />
         </DrawerBody>
-        <DrawerFooter justifyContent="space-around">
-          <Button onClick={onClose}>Cancel</Button>
-           <Button>{/* as a tag that references react router route for checkout page */}
-            <HStack>
-              <ShoppingCartCheckout />
-              <Text>Check Out</Text>
-            </HStack>
-          </Button>
+        <DrawerFooter flexDirection="column" alignItems="space-between" gap={4}>
+          <Flex justify="space-evenly">
+            <Text fontWeight="bold" fontSize="lg">
+              {"Total: $" + cart.total}
+            </Text>
+          </Flex>
+          <HStack w="100%" justify="space-evenly">
+            <Button onClick={onClose}>Cancel</Button>
+            <Button>
+              {/* as a tag that references react router route for checkout page */}
+              <HStack>
+                <ShoppingCartCheckout />
+                <Text>Check Out</Text>
+              </HStack>
+            </Button>
+          </HStack>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
