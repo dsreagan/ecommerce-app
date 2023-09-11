@@ -9,7 +9,13 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
+import {
+  KeyboardEvent,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react"
 import AuthInput from "../entities/AuthInput"
 
 interface Props {
@@ -63,6 +69,10 @@ export default function AuthModalRegister({
     }
   }
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") handleSubmit()
+  }
+
   return (
     <ModalContent alignItems="center">
       <ModalHeader>Create Your Account</ModalHeader>
@@ -76,22 +86,18 @@ export default function AuthModalRegister({
               name="username"
               value={formData.username}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               isInvalid={usernameError}
             />
-            {usernameError && (
-              <Text color="red.300">Please enter a username</Text>
-            )}
             <Input
               id="email"
               placeholder="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               isInvalid={emailError}
             />
-            {emailError && (
-              <Text color="red.300">Please enter a valid email address</Text>
-            )}
             <Input
               id="password"
               type="password"
@@ -99,11 +105,9 @@ export default function AuthModalRegister({
               name="password"
               value={formData.password}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               isInvalid={passwordError}
             />
-            {passwordError && (
-              <Text color="red.300">Please enter matching passwords</Text>
-            )}
             <Input
               id="password2"
               type="password"
@@ -111,8 +115,18 @@ export default function AuthModalRegister({
               name="password2"
               value={formData.password2}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               isInvalid={passwordError}
             />
+            {usernameError && (
+              <Text color="red.300">Please enter a username</Text>
+            )}
+            {emailError && (
+              <Text color="red.300">Please enter a valid email address</Text>
+            )}
+            {passwordError && (
+              <Text color="red.300">Please enter matching passwords</Text>
+            )}
             <Text color="red.300">{responseErrorMessage}</Text>
           </VStack>
         </ModalBody>

@@ -15,7 +15,7 @@ const ProductGrid = () => {
   }, [])
 
   return (
-    <Flex w="100%" wrap="wrap" gap={8} justify="center">
+    <Flex w="100%" wrap="wrap" gap={12} justify="center">
       {products.length > 0 &&
         products.map((product) => (
           <ProductSquare key={product._id} product={product} />

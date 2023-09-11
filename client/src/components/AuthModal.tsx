@@ -36,10 +36,11 @@ export default function AuthModal({ isOpen, onClose }: Props) {
             isAdmin: res.isAdmin,
             accessToken: res.accessTokens,
           })
+          onClose()
         }
       })
     }
-  }, [submit, action, input, setUser])
+  }, [submit, action, input, setUser, onClose])
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md" isCentered>

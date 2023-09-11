@@ -9,7 +9,7 @@ import {
   FormControl,
   ModalContent,
 } from "@chakra-ui/react"
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
+import { KeyboardEvent, ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import AuthInput from "../entities/AuthInput"
 
 interface Props {
@@ -51,6 +51,10 @@ export default function AuthModalLogin({
     }
   }
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") handleSubmit()
+  }
+
   return (
     <ModalContent alignItems="center">
       <ModalHeader>Welcome Back</ModalHeader>
@@ -63,11 +67,9 @@ export default function AuthModalLogin({
               name="username"
               value={formData.username}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               isInvalid={usernameError}
             />
-            {usernameError && (
-              <Text color="red.300">Please enter a username</Text>
-            )}
             <Input
               id="password"
               type="password"
@@ -76,7 +78,11 @@ export default function AuthModalLogin({
               value={formData.password}
               onChange={handleChange}
               isInvalid={passwordError}
+              onKeyDown={handleKeyDown}
             />
+            {usernameError && (
+              <Text color="red.300">Please enter a username</Text>
+            )}
             {passwordError && (
               <Text color="red.300">Please enter your password</Text>
             )}

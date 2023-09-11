@@ -1,6 +1,8 @@
 import { Button, Flex, Grid, GridItem, Heading, Show } from "@chakra-ui/react"
 import CartIcon from "./CartIcon"
 import SearchBar from "./SearchBar"
+import useLamaStore from "../store"
+import User from "../entities/User"
 
 interface Props {
   openAuthModal: () => void
@@ -8,10 +10,15 @@ interface Props {
 }
 
 const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
+  const { user, setUser } = useLamaStore()
+
+  const logOutUser = () => setUser({} as User)
+
   return (
     <Grid
       templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
       paddingX={{ base: "5px", sm: "10px" }}
+      bg="blue.800"
       h="70px"
       w="100%"
     >
@@ -42,9 +49,10 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
             marginRight={{ base: "80px", sm: "120px" }}
             fontSize="lg"
             fontWeight="normal"
-            onClick={openAuthModal}
+            onClick={!user?.username ? openAuthModal : logOutUser}
+            _focus={{ outline: "none" }}
           >
-            Sign In
+            {!user?.username ? "Sign In" : "Sign Out"}
           </Button>
           <CartIcon onClick={openCartDrawer} />
         </Flex>
