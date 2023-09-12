@@ -23,13 +23,17 @@ const useStore = create<LamaStore>((set) => ({
     set((store) => ({
       ...store,
       cart: {
-        total: store.cart.total + item.price,
+        total: store.user?.username
+          ? store.cart.total + item.price - item.price * 0.2
+          : store.cart.total + item.price,
         items: [
           ...store.cart.items,
           {
             title: item.title,
             id: item.id,
-            price: item.price,
+            price: store.user?.username
+              ? item.price - item.price * 0.2
+              : item.price,
             quantity: 1,
           },
         ],
@@ -39,7 +43,9 @@ const useStore = create<LamaStore>((set) => ({
     set((store) => ({
       ...store,
       cart: {
-        total: store.cart.total + item.price,
+        total: store.user?.username
+          ? store.cart.total + item.price - item.price * 0.2
+          : store.cart.total + item.price,
         items: store.cart.items.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : { ...i }
         ),
