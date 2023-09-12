@@ -22,6 +22,13 @@ const CategorySelector = ({ category, setCategory }: Props) => {
     >
       <option value="men">Men</option>
       <option value="women">Women</option>
+      <option value="accessories">Accessories</option>
+      <option value="fragrances">Fragrances</option>
+      <option value="clothing">Clothing</option>
+      <option value="shoes">Shoes</option>
+      <option value="skin care">Skin Care</option>
+      <option value="bags">Bags</option>
+      <option value="electronics">Electronics</option>
     </Select>
   )
 }
