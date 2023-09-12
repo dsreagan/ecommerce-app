@@ -1,7 +1,8 @@
-import { SimpleGrid } from "@chakra-ui/react"
+import { Flex, SimpleGrid } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import Product from "../entities/Product"
 import getProducts from "../utils/getProducts"
+import CategorySelector from "./CategorySelector"
 import ProductCard from "./ProductCard"
 import ProductCardContainer from "./ProductCardContainer"
 
@@ -24,29 +25,24 @@ const ProductGrid = () => {
   }, [category])
 
   return (
-    <SimpleGrid
-      padding="10px"
-      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-      spacing={6}
-    >
-      {products.length > 0 &&
-        products.map((product) => (
-          <ProductCardContainer>
-            <ProductCard key={product._id} product={product} />
-          </ProductCardContainer>
-        ))}
-    </SimpleGrid>
-    // <VStack bg="coral" paddingX={14}>
-    //   <Flex w="100%" paddingY={1} bg="blue.300">
-    //     <CategorySelector category={category} setCategory={setCategory} />
-    //   </Flex>
-    //   <Wrap spacing={10} bg="red">
-    //     {products.length > 0 &&
-    //       products.map((product) => (
-    //         <ProductCard key={product._id} product={product} />
-    //       ))}
-    //   </Wrap>
-    // </VStack>
+    <>
+      Put this in HomePage
+      <Flex w="100%" padding="10px" bg="blue.300">
+        <CategorySelector category={category} setCategory={setCategory} />{" "}
+      </Flex>
+      <SimpleGrid
+        padding="10px"
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={6}
+      >
+        {products.length > 0 &&
+          products.map((product) => (
+            <ProductCardContainer>
+              <ProductCard key={product._id} product={product} />
+            </ProductCardContainer>
+          ))}
+      </SimpleGrid>
+    </>
   )
 }
 

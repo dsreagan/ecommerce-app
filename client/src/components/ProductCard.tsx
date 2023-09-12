@@ -2,6 +2,7 @@ import { AddIcon, CheckIcon } from "@chakra-ui/icons"
 import { Button, Card, Center, Heading, Image } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import Product from "../entities/Product"
 import useLamaStore from "../store"
 
@@ -36,11 +37,11 @@ const ProductCard = ({ product }: Props) => {
 
   return (
     <Card bg="transparent" align="center" gap={3} paddingBottom={3}>
-      <Center maxHeight="200px" overflow="hidden">
+      <Center maxHeight="200px" overflow="hidden" borderRadius={3}>
         <Image w="100%" src={product.image} />
       </Center>
       <Heading marginBottom={5} fontSize="xl">
-        {product.title}
+        <Link to={"/products/" + product._id}>{product.title}</Link>
       </Heading>
       <Button onClick={handleClick} w="70px">
         {addedToCart ? (
