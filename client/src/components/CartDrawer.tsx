@@ -30,7 +30,7 @@ const CartDrawer = ({ isOpen, onClose }: Props) => {
         <DrawerCloseButton />
         <DrawerHeader>Your Cart</DrawerHeader>
         <DrawerBody>
-          <CartItemsContainer />
+          <CartItemsContainer onClose={onClose} />
         </DrawerBody>
         <DrawerFooter flexDirection="column" alignItems="space-between" gap={4}>
           <Flex justify="space-evenly">

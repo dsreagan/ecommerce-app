@@ -3,6 +3,7 @@ import CartIcon from "./CartIcon"
 import SearchBar from "./SearchBar"
 import useLamaStore from "../store"
 import User from "../entities/User"
+import { Link } from "react-router-dom"
 
 interface Props {
   openAuthModal: () => void
@@ -37,7 +38,9 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
           w="100%"
         >
           <Button bg="transparent" _hover={{ bg: "transparent" }} p="5px">
-            <Heading size="lg">hot lama</Heading>
+            <Heading size="lg">
+              <Link to="/">hot lama</Link>
+            </Heading>
           </Button>
         </Flex>
       </GridItem>

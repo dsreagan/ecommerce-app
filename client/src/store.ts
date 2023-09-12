@@ -65,7 +65,7 @@ const useStore = create<LamaStore>((set) => ({
     set((store) => ({
       ...store,
       cart: {
-        total: store.cart.total + item.price * item.quantity,
+        total: store.cart.total - item.price * item.quantity,
         items: store.cart.items.filter((i) => i.id !== item.id),
       },
     })),

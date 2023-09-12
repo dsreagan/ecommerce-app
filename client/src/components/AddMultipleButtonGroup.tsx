@@ -1,17 +1,22 @@
-import { AddIcon, MinusIcon } from "@chakra-ui/icons"
+import { AddIcon, MinusIcon, CheckIcon } from "@chakra-ui/icons"
 import { Box, Button, HStack, IconButton, Text, VStack } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Product from "../entities/Product"
 import useLamaStore from "../store"
 
 interface Props {
-    product: Product
+  product: Product
 }
 
-const AddMultipleButtonGroup = ({product}:Props) => {
+const AddMultipleButtonGroup = ({ product }: Props) => {
   const { cart, onAddFirstToCart, onAddAnotherToCart } = useLamaStore()
   const [quantity, setQuantity] = useState(1)
+  const [addedToCart, setAddedToCart] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => setAddedToCart(false), 1000)
+  })
 
   // Really messy !!!
   const onAddToCart = () => {
@@ -35,10 +40,12 @@ const AddMultipleButtonGroup = ({product}:Props) => {
         onAddAnotherToCart(itemAdded)
       }
     }
+    setQuantity(1)
+    setAddedToCart(true)
   }
 
   return (
-    <VStack gap={4}>
+    <VStack gap={4} position="relative">
       <HStack border="1px solid gray">
         <IconButton
           aria-label="Update cart"
@@ -59,12 +66,18 @@ const AddMultipleButtonGroup = ({product}:Props) => {
           onClick={() => setQuantity((prev) => prev + 1)}
         />
       </HStack>
-      <Button size="lg" onClick={onAddToCart}>
+      <Button size="lg" w="180px" onClick={onAddToCart}>
         <HStack>
           <Text fontSize="xl">Add To Cart</Text>
           <ShoppingCartOutlined />
         </HStack>
       </Button>
+      {addedToCart && (
+        <HStack pos="absolute" bottom={-10}>
+          <CheckIcon />
+          <Text fontSize="xl">Added</Text>
+        </HStack>
+      )}
     </VStack>
   )
 }
