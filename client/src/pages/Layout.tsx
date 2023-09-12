@@ -24,13 +24,11 @@ export default function Layout() {
   return (
     <>
       <Box w="100%" pos="fixed" top={0} zIndex={10}>
-        {/* <WarningBanner /> */}
+        <WarningBanner />
         {!user?.username && <PromotionBanner />}
         <Navbar openAuthModal={openAuthModal} openCartDrawer={openCartDrawer} />
       </Box>
-      <Box paddingY={16}>
-        <Outlet />
-      </Box>
+      <Outlet />
       <AuthModal isOpen={isAuthModelOpen} onClose={closeAuthModal} />
       <CartDrawer isOpen={isCartDrawerOpen} onClose={closeCartDrawer} />
     </>

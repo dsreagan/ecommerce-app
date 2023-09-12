@@ -1,5 +1,13 @@
 import { AddIcon, CheckIcon } from "@chakra-ui/icons"
-import { Button, Card, Center, Heading, Image } from "@chakra-ui/react"
+import {
+  Button,
+  Card,
+  Center,
+  Heading,
+  HStack,
+  Image,
+  Text,
+} from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
@@ -43,16 +51,19 @@ const ProductCard = ({ product }: Props) => {
       <Heading marginBottom={5} fontSize="xl">
         <Link to={"/products/" + product._id}>{product.title}</Link>
       </Heading>
-      <Button onClick={handleClick} w="70px">
-        {addedToCart ? (
-          <CheckIcon color="green.400" />
-        ) : (
-          <>
-            <AddIcon />
-            <ShoppingCartOutlined />
-          </>
-        )}
-      </Button>
+      <HStack justify="space-between" w="100%" paddingX="5px">
+        <Text fontSize="lg">{"$" + product.price}</Text>
+        <Button onClick={handleClick} w="70px">
+          {addedToCart ? (
+            <CheckIcon color="green.400" />
+          ) : (
+            <>
+              <AddIcon />
+              <ShoppingCartOutlined />
+            </>
+          )}
+        </Button>
+      </HStack>
     </Card>
   )
 }

@@ -1,15 +1,16 @@
-import { ChevronLeftIcon } from "@chakra-ui/icons"
 import {
+  Box,
+  Center,
   Grid,
   GridItem,
-  Center,
   Heading,
   Image,
   Text,
-  IconButton,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import AddMultipleButtonGroup from "../components/AddMultipleButtonGroup"
+import BackButton from "../components/BackButton"
 import Product from "../entities/Product"
 import getSingleProduct from "../utils/getSingleProduct"
 
@@ -22,34 +23,26 @@ const ProductDetailPage = () => {
   }, [productId])
 
   return (
-    <Center paddingY="70px" pos="relative">
-      <Link to="/">
-        <IconButton
-          aria-label="Go back"
-          icon={<ChevronLeftIcon />}
-          fontSize="24px"
-          variant="outline"
-          pos="absolute"
-          top={5}
-          left={5}
-        />
-      </Link>
+    <Center pos="relative" bg="gray.400" h="100vh">
+      <BackButton />
       <Grid
-        gridTemplateAreas={`"i t" "i b" "i d"`}
-        gridTemplateColumns={"0.8fr 1.2fr"}
+        gridTemplateAreas={{ base: `"i" "t" "d" "b"`, md: `"i t" "i b" "i d"` }}
+        gridTemplateColumns="0.8fr 1.2fr"
         h="350px"
         w="900px"
       >
         <GridItem area="i" bg="coral">
-          <Center h="450px" overflow="hidden">
+          <Box h="450px" overflow="hidden">
             <Image src={product.image} />
-          </Center>
+          </Box>
         </GridItem>
         <GridItem area="t" bg="blue.200" paddingX={5}>
           <Heading fontSize="3xl">{product.title}</Heading>
         </GridItem>
         <GridItem area="b" bg="green.200">
-          buttons
+          <Center h="100%">
+            <AddMultipleButtonGroup product={product} />
+          </Center>
         </GridItem>
         <GridItem area="d" bg="red.300" paddingX={5}>
           <Text>{product.description}</Text>
