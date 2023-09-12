@@ -1,5 +1,5 @@
 import { AddIcon, CheckIcon } from "@chakra-ui/icons"
-import { Card, Text, Image, Button, Center } from "@chakra-ui/react"
+import { Button, Card, Center, Heading, Image } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
 import { useEffect, useState } from "react"
 import Product from "../entities/Product"
@@ -9,7 +9,7 @@ interface Props {
   product: Product
 }
 
-const ProductSquare = ({ product }: Props) => {
+const ProductCard = ({ product }: Props) => {
   const { cart, onAddFirstToCart, onAddAnotherToCart } = useLamaStore()
   const [addedToCart, setAddedToCart] = useState(false)
 
@@ -35,18 +35,13 @@ const ProductSquare = ({ product }: Props) => {
   }
 
   return (
-    <Card
-      w="250px"
-      justify="center"
-      bg="transparent"
-      align="center"
-      gap={3}
-      paddingBottom={3}
-    >
-      <Center h="200px" overflow="hidden">
+    <Card bg="transparent" align="center" gap={3} paddingBottom={3}>
+      <Center maxHeight="200px" overflow="hidden">
         <Image w="100%" src={product.image} />
       </Center>
-      <Text marginBottom={5}>{product.title}</Text>
+      <Heading marginBottom={5} fontSize="xl">
+        {product.title}
+      </Heading>
       <Button onClick={handleClick} w="70px">
         {addedToCart ? (
           <CheckIcon color="green.400" />
@@ -61,4 +56,4 @@ const ProductSquare = ({ product }: Props) => {
   )
 }
 
-export default ProductSquare
+export default ProductCard

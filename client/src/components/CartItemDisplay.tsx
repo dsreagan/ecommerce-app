@@ -18,7 +18,7 @@ const CartItemDisplay = ({ item }: Props) => {
 
   return (
     <>
-      <VStack w="100%" paddingX={5} paddingY={3}>
+      <VStack w="100%" paddingX={5} paddingY={3} align="start">
         <HStack w="100%" justify="space-between">
           <Text>{item.title}</Text>
           <Text>${item.price}</Text>
