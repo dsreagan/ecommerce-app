@@ -1,4 +1,4 @@
-import { Button, Flex, Grid, GridItem, Heading, Show } from "@chakra-ui/react"
+import { Button, Flex, Grid, GridItem, Heading, Show, Text } from "@chakra-ui/react"
 import CartIcon from "./CartIcon"
 import SearchBar from "./SearchBar"
 import useLamaStore from "../store"
@@ -25,7 +25,8 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
     >
       <Show above="sm">
         <GridItem>
-          <Flex justify="start" align="center" w="100%" h="100%">
+          <Flex justify="start" align="center" w="100%" h="100%" gap={2}>
+            <Text>EN</Text>
             <SearchBar />
           </Flex>
         </GridItem>

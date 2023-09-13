@@ -1,10 +1,11 @@
 import {
-  Box,
+  Flex,
   Center,
   Grid,
   GridItem,
   Heading,
   Image,
+  Show,
   Text,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
@@ -23,21 +24,38 @@ const ProductDetailPage = () => {
   }, [productId])
 
   return (
-    <Center pos="relative" bg="gray.400" h="100vh">
-      <BackButton />
+    <Center
+      pos="relative"
+      bg="gray.400"
+      h="100vh"
+      paddingX="5px"
+      paddingTop={{ md: "100px" }}
+    >
+      <Show above="md">
+        <BackButton />
+      </Show>
       <Grid
-        gridTemplateAreas={{ base: `"i" "t" "d" "b"`, md: `"i t" "i b" "i d"` }}
+        height={{ base: "300px", md: "450px" }}
+        width={{ md: "900px" }}
+        gridTemplateAreas={`"i t" "i b" "d d"`}
         gridTemplateColumns="0.8fr 1.2fr"
-        h="350px"
-        w="900px"
+        gridTemplateRows="1fr 1.2fr 0.8fr"
       >
         <GridItem area="i" bg="coral">
-          <Box h="450px" overflow="hidden">
+          <Flex
+            overflow="hidden"
+            height="100%"
+            alignItems="center"
+            bg="#F5F5F5"
+            borderRadius={5}
+          >
             <Image src={product.image} />
-          </Box>
+          </Flex>
         </GridItem>
         <GridItem area="t" bg="blue.200" paddingX={5}>
-          <Heading fontSize="3xl">{product.title}</Heading>
+          <Heading fontSize={{ base: "xl", md: "3xl" }} fontWeight="normal">
+            {product.title}
+          </Heading>
         </GridItem>
         <GridItem area="b" bg="green.200">
           <Center h="100%">
