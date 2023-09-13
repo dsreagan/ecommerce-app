@@ -19,7 +19,7 @@ interface Props {
 }
 
 const ProductCard = ({ product }: Props) => {
-  const { cart, onAddFirstToCart, onAddAnotherToCart } = useLamaStore()
+  const { user, cart, onAddFirstToCart, onAddAnotherToCart } = useLamaStore()
   const [addedToCart, setAddedToCart] = useState(false)
 
   useEffect(() => {
@@ -52,7 +52,11 @@ const ProductCard = ({ product }: Props) => {
         <Link to={"/products/" + product._id}>{product.title}</Link>
       </Heading>
       <HStack justify="space-between" w="100%" paddingX="5px">
-        <Text fontSize="lg">{"$" + product.price}</Text>
+        <Text fontSize="lg">
+          {user?.username
+            ? `$${product.price - product.price * 0.2}`
+            : "$" + product.price}
+        </Text>
         <Button onClick={handleClick} w="70px">
           {addedToCart ? (
             <CheckIcon color="green.400" />
