@@ -14,6 +14,7 @@ import {
 import { ShoppingCartCheckout } from "@mui/icons-material"
 import CartItemsContainer from "./CartItemsContainer"
 import useLamaStore from "../store"
+import { Link } from "react-router-dom"
 
 interface Props {
   isOpen: boolean
@@ -40,13 +41,14 @@ const CartDrawer = ({ isOpen, onClose }: Props) => {
           </Flex>
           <HStack w="100%" justify="space-evenly">
             <Button onClick={onClose}>Cancel</Button>
-            <Button>
-              {/* as a tag that references react router route for checkout page */}
-              <HStack>
-                <ShoppingCartCheckout />
-                <Text>Check Out</Text>
-              </HStack>
-            </Button>
+            <Link to="/checkout">
+              <Button onClick={onClose}>
+                <HStack>
+                  <ShoppingCartCheckout />
+                  <Text>Check Out</Text>
+                </HStack>
+              </Button>
+            </Link>
           </HStack>
         </DrawerFooter>
       </DrawerContent>
