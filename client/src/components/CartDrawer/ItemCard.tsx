@@ -2,7 +2,6 @@ import { CloseIcon } from "@chakra-ui/icons"
 import {
   Button,
   Card,
-  Center,
   HStack,
   IconButton,
   Image,

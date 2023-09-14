@@ -1,10 +1,9 @@
 import { Card, Flex, Heading, Text } from "@chakra-ui/react"
 import useLamaStore from "../../store"
-import CheckoutItem from "./CheckoutCartItem"
+import CheckoutItem from "./CheckoutItem"
 
-const CheckoutDetails = () => {
-  const { cart, onAddAnotherToCart, subtractFromCart, removeFromCart } =
-    useLamaStore()
+const CheckoutDetailsCard = () => {
+  const { cart } = useLamaStore()
 
   return (
     <Card h="70vh" p="20px" overflowY="scroll">
@@ -24,4 +23,4 @@ const CheckoutDetails = () => {
   )
 }
 
-export default CheckoutDetails
+export default CheckoutDetailsCard
