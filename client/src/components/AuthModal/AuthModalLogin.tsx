@@ -9,8 +9,14 @@ import {
   FormControl,
   ModalContent,
 } from "@chakra-ui/react"
-import { KeyboardEvent, ChangeEvent, Dispatch, SetStateAction, useState } from "react"
-import AuthInput from "../entities/AuthInput"
+import {
+  KeyboardEvent,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react"
+import AuthInput from "../../entities/AuthInput"
 
 interface Props {
   setAction: Dispatch<SetStateAction<"register" | "login">>

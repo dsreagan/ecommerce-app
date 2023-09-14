@@ -11,8 +11,8 @@ import {
 import { ShoppingCartOutlined } from "@mui/icons-material"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Product from "../entities/Product"
-import useLamaStore from "../store"
+import Product from "../../entities/Product"
+import useLamaStore from "../../store"
 
 interface Props {
   product: Product
@@ -29,8 +29,13 @@ const ProductCard = ({ product }: Props) => {
   const handleClick = () => {
     setAddedToCart(true)
     const itemAdded = {
-      title: product.title,
       id: product._id,
+      title: product.title,
+      description: product.description,
+      image: product.image,
+      categories: product.categories,
+      size: product.size,
+      color: product.color,
       price: product.price,
       quantity: 1,
     }

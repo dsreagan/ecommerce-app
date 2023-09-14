@@ -1,7 +1,7 @@
-import ProductGrid from "../components/ProductGrid"
-import HeroSlider from "../components/HeroSlider"
+import ProductGrid from "../components/HomePage/ProductGrid"
+import HeroSlider from "../components/HomePage/HeroSlider"
 import { Box, Flex } from "@chakra-ui/react"
-import CategorySelector from "../components/CategorySelector"
+import CategorySelector from "../components/HomePage/CategorySelector"
 import { useState } from "react"
 
 const HomePage = () => {

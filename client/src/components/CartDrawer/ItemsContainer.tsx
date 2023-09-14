@@ -1,6 +1,6 @@
-import useLamaStore from "../store"
+import useLamaStore from "../../store"
 import { VStack, Text } from "@chakra-ui/react"
-import CartItemCard from "./CartItemCard"
+import CartItemCard from "./ItemCard"
 
 interface Props {
   onClose: () => void

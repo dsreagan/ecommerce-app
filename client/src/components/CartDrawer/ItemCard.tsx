@@ -2,15 +2,17 @@ import { CloseIcon } from "@chakra-ui/icons"
 import {
   Button,
   Card,
+  Center,
   HStack,
   IconButton,
+  Image,
   Text,
   VStack,
 } from "@chakra-ui/react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import CartItem from "../entities/CartItem"
-import useLamaStore from "../store"
+import CartItem from "../../entities/CartItem"
+import useLamaStore from "../../store"
 import CartButtonGroup from "./CartButtonGroup"
 
 interface Props {
@@ -27,7 +29,7 @@ const CartItemCard = ({ item, onClose }: Props) => {
   })
 
   return (
-    <Card w="100%" pos="relative" paddingY={2}>
+    <Card w="100%" pos="relative" paddingTop={5} paddingBottom={3} paddingX={1}>
       <IconButton
         icon={<CloseIcon fontSize="8px" />}
         aria-label="Remove from cart"
@@ -39,21 +41,29 @@ const CartItemCard = ({ item, onClose }: Props) => {
         onClick={() => removeFromCart(item)}
         _hover={{ color: "red.400" }}
       />
-      <VStack w="100%" paddingX={5} paddingY={3} align="start">
-        <HStack w="100%" justify="space-between">
+      <HStack w="100%">
+        //
+        <Image src={item.image} borderRadius={5} w="45px" />
+        // title and price+btns
+        <VStack gap={5} paddingLeft={2} w="100%" align="start">
           <Button p={0} onClick={onClose} variant="link">
-            <Text>
+            <Text fontSize="lg">
               <Link to={"/products/" + item.id}>{item.title}</Link>
             </Text>
           </Button>
-          <Text>${item.price}</Text>
-        </HStack>
-        <CartButtonGroup
-          quantity={item.quantity}
-          addAnotherToCart={() => onAddAnotherToCart(item)}
-          subtractFromCart={() => subtractFromCart(item)}
-        />
-      </VStack>
+          //price and btns
+          <HStack justify="space-between" w="100%">
+            <Text fontSize="md" opacity={0.8} fontWeight="bold">
+              ${item.price}
+            </Text>
+            <CartButtonGroup
+              quantity={item.quantity}
+              addAnotherToCart={() => onAddAnotherToCart(item)}
+              subtractFromCart={() => subtractFromCart(item)}
+            />
+          </HStack>
+        </VStack>
+      </HStack>
     </Card>
   )
 }

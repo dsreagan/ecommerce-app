@@ -2,8 +2,8 @@ import { AddIcon, MinusIcon, CheckIcon } from "@chakra-ui/icons"
 import { Box, Button, HStack, IconButton, Text, VStack } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
 import { useEffect, useState } from "react"
-import Product from "../entities/Product"
-import useLamaStore from "../store"
+import Product from "../../entities/Product"
+import useLamaStore from "../../store"
 
 interface Props {
   product: Product
@@ -21,8 +21,13 @@ const AddMultipleButtonGroup = ({ product }: Props) => {
   // Really messy !!!
   const onAddToCart = () => {
     const itemAdded = {
-      title: product.title,
       id: product._id,
+      title: product.title,
+      description: product.description,
+      image: product.image,
+      categories: product.categories,
+      size: product.size,
+      color: product.color,
       price: product.price,
       quantity: 1,
     }

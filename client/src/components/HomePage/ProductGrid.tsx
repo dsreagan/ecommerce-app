@@ -1,7 +1,7 @@
 import { SimpleGrid } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import Product from "../entities/Product"
-import getProducts from "../utils/getProducts"
+import Product from "../../entities/Product"
+import getProducts from "../../utils/getProducts"
 import ProductCard from "./ProductCard"
 import ProductCardContainer from "./ProductCardContainer"
 
@@ -28,10 +28,7 @@ const ProductGrid = ({ category }: Props) => {
 
   return (
     <>
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={6}
-      >
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
         {products.length > 0 &&
           products.map((product) => (
             <ProductCardContainer>

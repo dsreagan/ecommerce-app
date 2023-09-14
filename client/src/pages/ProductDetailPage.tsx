@@ -10,8 +10,8 @@ import {
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import AddMultipleButtonGroup from "../components/AddMultipleButtonGroup"
-import BackButton from "../components/BackButton"
+import AddMultipleButtonGroup from "../components/ProductDetailPage/AddMultipleButtonGroup"
+import BackButton from "../components/ProductDetailPage/BackButton"
 import Product from "../entities/Product"
 import getSingleProduct from "../utils/getSingleProduct"
 

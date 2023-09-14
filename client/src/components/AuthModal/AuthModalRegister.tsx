@@ -16,7 +16,7 @@ import {
   SetStateAction,
   useState,
 } from "react"
-import AuthInput from "../entities/AuthInput"
+import AuthInput from "../../entities/AuthInput"
 
 interface Props {
   setAction: Dispatch<SetStateAction<"register" | "login">>

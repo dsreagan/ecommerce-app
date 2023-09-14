@@ -1,8 +1,16 @@
-import { Button, Flex, Grid, GridItem, Heading, Show, Text } from "@chakra-ui/react"
+import {
+  Button,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Show,
+  Text,
+} from "@chakra-ui/react"
 import CartIcon from "./CartIcon"
 import SearchBar from "./SearchBar"
-import useLamaStore from "../store"
-import User from "../entities/User"
+import useLamaStore from "../../store"
+import User from "../../entities/User"
 import { Link } from "react-router-dom"
 
 interface Props {

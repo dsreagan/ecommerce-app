@@ -1,10 +1,10 @@
 import { Modal, ModalOverlay } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import AuthInput from "../entities/AuthInput"
+import AuthInput from "../../entities/AuthInput"
 import AuthModalLogin from "./AuthModalLogin"
 import AuthModalRegister from "./AuthModalRegister"
-import useLamaStore from "../store"
-import authenticateUser from "../auth/authenticateUser"
+import useLamaStore from "../../store"
+import authenticateUser from "../../auth/authenticateUser"
 
 interface Props {
   isOpen: boolean

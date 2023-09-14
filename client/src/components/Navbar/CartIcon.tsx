@@ -1,7 +1,7 @@
 import { Box, Circle, IconButton, Text } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
 import { useEffect, useState } from "react"
-import useLamaStore from "../store"
+import useLamaStore from "../../store"
 
 interface Props {
   onClick: () => void

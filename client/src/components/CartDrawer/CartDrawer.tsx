@@ -12,8 +12,8 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { ShoppingCartCheckout } from "@mui/icons-material"
-import CartItemsContainer from "./CartItemsContainer"
-import useLamaStore from "../store"
+import CartItemsContainer from "./ItemsContainer"
+import useLamaStore from "../../store"
 import { Link } from "react-router-dom"
 
 interface Props {
