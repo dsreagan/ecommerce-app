@@ -1,17 +1,17 @@
 import {
   Button,
+  Center,
   Flex,
   Grid,
   GridItem,
   Heading,
-  Show,
-  Text,
+  Show
 } from "@chakra-ui/react"
-import CartIcon from "./CartIcon"
-import SearchBar from "./SearchBar"
-import useLamaStore from "../../store"
-import User from "../../entities/User"
 import { Link } from "react-router-dom"
+import User from "../../entities/User"
+import useLamaStore from "../../store"
+import CartIcon from "./CartIcon"
+import Logo from "./Logo"
 
 interface Props {
   openAuthModal: () => void
@@ -32,10 +32,9 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
       w="100%"
     >
       <Show above="sm">
-        <GridItem>
-          <Flex justify="start" align="center" w="100%" h="100%" gap={2}>
-            <Text>EN</Text>
-            <SearchBar />
+        <GridItem justifyContent="center">
+          <Flex h="100%" align="center">
+            <Logo />
           </Flex>
         </GridItem>
       </Show>
@@ -46,11 +45,9 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
           h="100%"
           w="100%"
         >
-          <Button bg="transparent" _hover={{ bg: "transparent" }} p="5px">
-            <Heading size="lg">
-              <Link to="/">hot lama</Link>
-            </Heading>
-          </Button>
+          <Heading size="lg">
+            <Link to="/">hot lama</Link>
+          </Heading>
         </Flex>
       </GridItem>
       <GridItem>

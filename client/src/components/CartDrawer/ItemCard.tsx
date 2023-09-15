@@ -41,16 +41,13 @@ const CartItemCard = ({ item, onClose }: Props) => {
         _hover={{ color: "red.400" }}
       />
       <HStack w="100%">
-        //
         <Image src={item.image} borderRadius={5} w="45px" />
-        // title and price+btns
         <VStack gap={5} paddingLeft={2} w="100%" align="start">
           <Button p={0} onClick={onClose} variant="link">
             <Text fontSize="lg">
               <Link to={"/products/" + item.id}>{item.title}</Link>
             </Text>
           </Button>
-          //price and btns
           <HStack justify="space-between" w="100%">
             <Text fontSize="md" opacity={0.8} fontWeight="bold">
               ${item.price}

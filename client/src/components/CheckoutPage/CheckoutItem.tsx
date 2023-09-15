@@ -1,4 +1,14 @@
-import { Center, Divider, Flex, Heading, HStack, Image, Text, VStack } from "@chakra-ui/react"
+import {
+  Center,
+  Divider,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 import CartItem from "../../entities/CartItem"
 
 interface Props {
@@ -14,7 +24,9 @@ const CheckoutItem = ({ item }: Props) => {
             <Image src={item.image} borderRadius={5} />
           </Center>
           <VStack align="start">
-            <Heading size="md">{item.title}</Heading>
+            <Heading size="md">
+              <Link to={"/products/" + item.id}>{item.title}</Link>
+            </Heading>
             <Text>{item.color}</Text>
             <Text>{item.size}</Text>
           </VStack>
@@ -23,7 +35,9 @@ const CheckoutItem = ({ item }: Props) => {
           <Text opacity={0.8}>${item.price}</Text>
           <Text opacity={0.8}>{`x ${item.quantity}`}</Text>
           <Divider />
-          <Text fontWeight="bold" fontSize="lg">${item.quantity * item.price}</Text>
+          <Text fontWeight="bold" fontSize="lg">
+            ${item.quantity * item.price}
+          </Text>
         </VStack>
       </Flex>
       <Divider />
