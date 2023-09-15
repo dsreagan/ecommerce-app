@@ -31,8 +31,8 @@ const ProductGrid = ({ category }: Props) => {
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
         {products.length > 0 &&
           products.map((product) => (
-            <ProductCardContainer>
-              <ProductCard key={product._id} product={product} />
+            <ProductCardContainer key={product._id}>
+              <ProductCard product={product} />
             </ProductCardContainer>
           ))}
       </SimpleGrid>

@@ -14,8 +14,7 @@ const authenticateUser = async (input: AuthInput, action: string) => {
       config = {
         method: "post",
         maxBodyLength: Infinity,
-        // url: "https://hot-lama-api.onrender.com/api/auth/login",
-        url: "http://localhost:5000/api/auth/login",
+        url: "https://hot-lama-api.onrender.com/api/auth/login",
         headers: {
           "Content-Type": "application/json",
         },

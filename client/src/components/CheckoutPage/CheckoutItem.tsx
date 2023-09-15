@@ -1,6 +1,9 @@
 import {
   Center,
   Divider,
+  Editable,
+  EditableInput,
+  EditablePreview,
   Flex,
   Heading,
   HStack,
@@ -27,13 +30,19 @@ const CheckoutItem = ({ item }: Props) => {
             <Heading size="md">
               <Link to={"/products/" + item.id}>{item.title}</Link>
             </Heading>
-            <Text>{item.color}</Text>
-            <Text>{item.size}</Text>
+            {item.color !== "" && <Text>{"color: " + item.color}</Text>}
+            {item.size !== "" && <Text>{"size: " + item.size}</Text>}
           </VStack>
         </HStack>
         <VStack>
           <Text opacity={0.8}>${item.price}</Text>
-          <Text opacity={0.8}>{`x ${item.quantity}`}</Text>
+          <HStack>
+            <Text>{"x "}</Text>
+            <Editable opacity={0.8} defaultValue={item.quantity.toString()}>
+              <EditablePreview />
+              <EditableInput />
+            </Editable>
+          </HStack>
           <Divider />
           <Text fontWeight="bold" fontSize="lg">
             ${item.quantity * item.price}

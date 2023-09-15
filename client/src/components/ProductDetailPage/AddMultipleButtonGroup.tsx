@@ -1,22 +1,18 @@
-import { AddIcon, MinusIcon, CheckIcon } from "@chakra-ui/icons"
+import { AddIcon, MinusIcon } from "@chakra-ui/icons"
 import { Box, Button, HStack, IconButton, Text, VStack } from "@chakra-ui/react"
 import { ShoppingCartOutlined } from "@mui/icons-material"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Product from "../../entities/Product"
 import useLamaStore from "../../store"
 
 interface Props {
   product: Product
+  setAddedToCart: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const AddMultipleButtonGroup = ({ product }: Props) => {
+const AddMultipleButtonGroup = ({ product, setAddedToCart }: Props) => {
   const { cart, onAddFirstToCart, onAddAnotherToCart } = useLamaStore()
   const [quantity, setQuantity] = useState(1)
-  const [addedToCart, setAddedToCart] = useState(false)
-
-  useEffect(() => {
-    setTimeout(() => setAddedToCart(false), 1000)
-  })
 
   // Really messy !!!
   const onAddToCart = () => {
@@ -79,12 +75,6 @@ const AddMultipleButtonGroup = ({ product }: Props) => {
           <ShoppingCartOutlined />
         </HStack>
       </Button>
-      {addedToCart && (
-        <HStack pos="absolute" bottom={-10}>
-          <CheckIcon />
-          <Text fontSize="xl">Added</Text>
-        </HStack>
-      )}
     </VStack>
   )
 }

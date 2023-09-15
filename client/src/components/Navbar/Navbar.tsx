@@ -1,7 +1,5 @@
 import {
-  Button,
-  Center,
-  Flex,
+  Button, Flex,
   Grid,
   GridItem,
   Heading,
@@ -16,9 +14,10 @@ import Logo from "./Logo"
 interface Props {
   openAuthModal: () => void
   openCartDrawer: () => void
+  openLogoModal: () => void
 }
 
-const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
+const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
   const { user, setUser } = useLamaStore()
 
   const logOutUser = () => setUser({} as User)
@@ -33,8 +32,10 @@ const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
     >
       <Show above="sm">
         <GridItem justifyContent="center">
-          <Flex h="100%" align="center">
-            <Logo />
+          <Flex h="100%" align="center" marginLeft={5}>
+            <button onClick={openLogoModal}>
+              <Logo />
+            </button>
           </Flex>
         </GridItem>
       </Show>

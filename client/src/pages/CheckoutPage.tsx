@@ -1,7 +1,7 @@
 import { Card, Center, Grid, GridItem } from "@chakra-ui/react"
 import { useState } from "react"
 import CartDetailsCard from "../components/CheckoutPage/CartDetailsCard"
-import CheckoutCard from "../components/CheckoutPage/CheckoutCard"
+import CheckoutCard from "../components/CheckoutPage/PlaceOrderCard"
 
 const CheckoutPage = () => {
   const [orderPlaced, setOrderPlaced] = useState(false)

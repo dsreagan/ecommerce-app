@@ -17,7 +17,7 @@ interface Props {
   setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const CheckoutCard = ({
+const PlaceOrder = ({
   paymentInfo,
   setPaymentInfo,
   shippingInfo,
@@ -86,4 +86,4 @@ const CheckoutCard = ({
   )
 }
 
-export default CheckoutCard
+export default PlaceOrder
