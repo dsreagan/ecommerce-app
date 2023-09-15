@@ -5,10 +5,10 @@ import Address from "../../entities/Address"
 interface Props {
   shippingInfo: Address
   setShippingInfo: React.Dispatch<React.SetStateAction<Address>>
-  
+  invalidInput: number
 }
 
-const ShippingForm = ({ shippingInfo, setShippingInfo }: Props) => {
+const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) => {
   
   const handleChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
@@ -29,24 +29,28 @@ const ShippingForm = ({ shippingInfo, setShippingInfo }: Props) => {
             name="streetAddr"
             value={shippingInfo.streetAddr}
             onChange={handleChange}
+            isInvalid={invalidInput === 6}
           />
           <Input
             placeholder="City"
             name="city"
             value={shippingInfo.city}
             onChange={handleChange}
+            isInvalid={invalidInput === 7}
           />
           <Input
             placeholder="State"
             name="state"
             value={shippingInfo.state}
             onChange={handleChange}
+            isInvalid={invalidInput === 8}
           />
           <Input
             placeholder="Zip"
             name="zip"
             value={shippingInfo.zip}
             onChange={handleChange}
+            isInvalid={invalidInput === 9}
           />
         </VStack>
       </FormControl>

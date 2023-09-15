@@ -1,5 +1,5 @@
 import { Button, Card, Checkbox, Divider, Text, VStack } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Address from "../../entities/Address"
 import PaymentDetails from "../../entities/PaymentDetails"
 import verifyCheckoutInput from "../../utils/verifyCheckoutInput"
@@ -26,25 +26,38 @@ const CheckoutCard = ({
   setBillingInfo,
   setOrderPlaced,
 }: Props) => {
-  const [error, setError] = useState({ active: false, message: "" })
+  const [error, setError] = useState({ active: true, element: 0, message: "" })
   const [sameBilling, setSameBilling] = useState(true)
 
-  const onSubmit = () => {
-    // !! Arbitrary Error Handling !!
-    // No payment system in place at this time
-    setError(verifyCheckoutInput({ paymentInfo, shippingInfo, billingInfo }))
+  useEffect(() => {
     if (!error.active) setOrderPlaced(true)
+  })
+
+  const onSubmit = () => {
+    // !! Semi-Arbitrary Error Handling !!
+    // No payment system in place at this time
+    let newError = { active: true, element: 0, message: "" }
+    sameBilling
+      ? (newError = verifyCheckoutInput({ paymentInfo, shippingInfo }))
+      : (newError = verifyCheckoutInput({
+          paymentInfo,
+          shippingInfo,
+          billingInfo,
+        }))
+    setError(newError)
   }
 
   return (
     <Card h="70vh" p={5} overflowY="scroll" textAlign="center">
       <VStack spacing={5}>
         <PaymentForm
+          invalidInput={error.element}
           paymentInfo={paymentInfo}
           setPaymentInfo={setPaymentInfo}
         />
         <Divider />
         <ShippingForm
+          invalidInput={error.element}
           shippingInfo={shippingInfo}
           setShippingInfo={setShippingInfo}
         />
@@ -58,12 +71,13 @@ const CheckoutCard = ({
           <>
             <Divider />
             <BillingForm
+              invalidInput={error.element}
               billingInfo={billingInfo}
               setBillingInfo={setBillingInfo}
             />
           </>
         )}
-        {error.active && <Text color="red.400">{"*" + error.message}</Text>}
+        {error.active && <Text color="red.400">{error.message}</Text>}
         <Button size={{ base: "md", sm: "lg" }} onClick={onSubmit}>
           Place Order
         </Button>
