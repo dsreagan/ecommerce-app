@@ -49,7 +49,14 @@ const ProductCard = ({ product }: Props) => {
   }
 
   return (
-    <Card bg="transparent" align="center" gap={3} paddingBottom={3}>
+    <Card
+      bg="white"
+      align="center"
+      gap={3}
+      paddingBottom={3}
+      color="black"
+      overflow="hidden"
+    >
       <Center maxHeight="200px" overflow="hidden" borderRadius={3}>
         <Image w="100%" src={product.image} />
       </Center>
@@ -57,18 +64,18 @@ const ProductCard = ({ product }: Props) => {
         <Link to={"/products/" + product._id}>{product.title}</Link>
       </Heading>
       <HStack justify="space-between" w="100%" paddingX="5px">
-        <Text fontSize="lg">
+        <Text fontSize="lg" marginLeft={2}>
           {user?.username
             ? `$${product.price - product.price * 0.2}`
             : "$" + product.price}
         </Text>
-        <Button onClick={handleClick} w="70px">
+        <Button onClick={handleClick} w="70px" variant="primary">
           {addedToCart ? (
             <CheckIcon color="green.400" />
           ) : (
             <>
-              <AddIcon />
-              <ShoppingCartOutlined />
+              <AddIcon color="black" />
+              <ShoppingCartOutlined style={{ color: "black" }} />
             </>
           )}
         </Button>

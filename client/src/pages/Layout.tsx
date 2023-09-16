@@ -4,12 +4,9 @@ import AuthModal from "../components/AuthModal/AuthModal"
 import CartDrawer from "../components/CartDrawer/CartDrawer"
 import LogoModal from "../components/LogoModal"
 import Navbar from "../components/Navbar/Navbar"
-import PromotionBanner from "../components/PromotionBanner"
 import WarningBanner from "../components/WarningBanner"
-import useLamaStore from "../store"
 
 export default function Layout() {
-  const user = useLamaStore((s) => s.user)
   const {
     isOpen: isAuthModelOpen,
     onClose: closeAuthModal,
@@ -32,7 +29,6 @@ export default function Layout() {
     <>
       <Box w="100%" pos="fixed" top={0} zIndex={10}>
         <WarningBanner />
-        {!user?.username && <PromotionBanner />}
         <Navbar
           openAuthModal={openAuthModal}
           openCartDrawer={openCartDrawer}

@@ -28,7 +28,7 @@ const CartItemCard = ({ item, onClose }: Props) => {
   })
 
   return (
-    <Card w="100%" pos="relative" paddingTop={5} paddingBottom={3} paddingX={1}>
+    <Card w="100%" pos="relative" paddingTop={5} paddingBottom={3} paddingX={1} bg="white">
       <IconButton
         icon={<CloseIcon fontSize="8px" />}
         aria-label="Remove from cart"
@@ -36,20 +36,20 @@ const CartItemCard = ({ item, onClose }: Props) => {
         right={0}
         top={0}
         size="xs"
-        variant="ghost"
+        variant="primary"
         onClick={() => removeFromCart(item)}
-        _hover={{ color: "red.400" }}
+        _hover={{ color: "red" }}
       />
       <HStack w="100%">
         <Image src={item.image} borderRadius={5} w="45px" />
         <VStack gap={5} paddingLeft={2} w="100%" align="start">
           <Button p={0} onClick={onClose} variant="link">
-            <Text fontSize="lg">
+            <Text fontSize="lg" color="black">
               <Link to={"/products/" + item.id}>{item.title}</Link>
             </Text>
           </Button>
           <HStack justify="space-between" w="100%">
-            <Text fontSize="md" opacity={0.8} fontWeight="bold">
+            <Text fontSize="md" opacity={0.8} fontWeight="bold" color="black">
               ${item.price}
             </Text>
             <CartButtonGroup

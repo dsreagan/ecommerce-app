@@ -17,6 +17,7 @@ import {
   useState,
 } from "react"
 import AuthInput from "../../entities/AuthInput"
+import inputStyles from "../../styles/inputStyles"
 
 interface Props {
   setAction: Dispatch<SetStateAction<"register" | "login">>
@@ -62,7 +63,7 @@ export default function AuthModalLogin({
   }
 
   return (
-    <ModalContent alignItems="center">
+    <ModalContent alignItems="center" bg="whitesmoke" color="black">
       <ModalHeader>Welcome Back</ModalHeader>
       <FormControl>
         <ModalBody textAlign="center">
@@ -75,6 +76,7 @@ export default function AuthModalLogin({
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               isInvalid={usernameError}
+              {...inputStyles}
             />
             <Input
               id="password"
@@ -85,6 +87,7 @@ export default function AuthModalLogin({
               onChange={handleChange}
               isInvalid={passwordError}
               onKeyDown={handleKeyDown}
+              {...inputStyles}
             />
             {usernameError && (
               <Text color="red.300">Please enter a username</Text>
@@ -97,7 +100,9 @@ export default function AuthModalLogin({
         </ModalBody>
         <ModalFooter justifyContent="center">
           <VStack>
-            <Button onClick={handleSubmit}>Sign In</Button>
+            <Button onClick={handleSubmit} variant="secondary">
+              Sign In
+            </Button>
             <Text>
               Don't have an account?{" "}
               <Button
@@ -106,6 +111,7 @@ export default function AuthModalLogin({
                   setResponseErrorMessage("")
                   setAction("register")
                 }}
+                color="blue.500"
               >
                 Register
               </Button>

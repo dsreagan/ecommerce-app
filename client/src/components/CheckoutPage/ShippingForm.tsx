@@ -1,6 +1,7 @@
 import { FormControl, Input, Text, VStack } from "@chakra-ui/react"
 import { ChangeEvent } from "react"
 import Address from "../../entities/Address"
+import inputStyles from "../../styles/inputStyles"
 
 interface Props {
   shippingInfo: Address
@@ -8,8 +9,11 @@ interface Props {
   invalidInput: number
 }
 
-const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) => {
-  
+const ShippingForm = ({
+  shippingInfo,
+  setShippingInfo,
+  invalidInput,
+}: Props) => {
   const handleChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => {
@@ -21,7 +25,9 @@ const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) =>
 
   return (
     <>
-      <Text fontSize="lg">Shipping Address</Text>
+      <Text fontSize="lg" fontWeight="bold">
+        Shipping Address
+      </Text>
       <FormControl>
         <VStack spacing={3}>
           <Input
@@ -30,6 +36,7 @@ const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) =>
             value={shippingInfo.streetAddr}
             onChange={handleChange}
             isInvalid={invalidInput === 6}
+            {...inputStyles}
           />
           <Input
             placeholder="City"
@@ -37,6 +44,7 @@ const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) =>
             value={shippingInfo.city}
             onChange={handleChange}
             isInvalid={invalidInput === 7}
+            {...inputStyles}
           />
           <Input
             placeholder="State"
@@ -44,6 +52,7 @@ const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) =>
             value={shippingInfo.state}
             onChange={handleChange}
             isInvalid={invalidInput === 8}
+            {...inputStyles}
           />
           <Input
             placeholder="Zip"
@@ -51,6 +60,7 @@ const ShippingForm = ({ shippingInfo, setShippingInfo, invalidInput }: Props) =>
             value={shippingInfo.zip}
             onChange={handleChange}
             isInvalid={invalidInput === 9}
+            {...inputStyles}
           />
         </VStack>
       </FormControl>

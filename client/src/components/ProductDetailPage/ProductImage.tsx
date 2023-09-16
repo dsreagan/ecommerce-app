@@ -8,12 +8,11 @@ const ProductImage = ({ image }: Props) => {
   return (
     <Flex
       overflow="hidden"
-      height="100%"
       alignItems="center"
-      bg="#F5F5F5"
+      maxHeight="100%"
       borderRadius={5}
     >
-      <Image src={image} />
+      <Image src={image} borderRadius={5} />
     </Flex>
   )
 }

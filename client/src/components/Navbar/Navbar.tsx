@@ -1,10 +1,4 @@
-import {
-  Button, Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Show
-} from "@chakra-ui/react"
+import { Button, Flex, Grid, GridItem, Heading, Show } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import User from "../../entities/User"
 import useLamaStore from "../../store"
@@ -26,9 +20,10 @@ const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
     <Grid
       templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
       paddingX={{ base: "5px", sm: "10px" }}
-      bg="blue.800"
+      bg="white"
       h="70px"
       w="100%"
+      boxShadow="0 2px 4px 0 rgba(0,0,0,.2)"
     >
       <Show above="sm">
         <GridItem justifyContent="center">
@@ -46,7 +41,7 @@ const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
           h="100%"
           w="100%"
         >
-          <Heading size="lg">
+          <Heading size="lg" color="black">
             <Link to="/">hot lama</Link>
           </Heading>
         </Flex>
@@ -58,9 +53,9 @@ const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
             variant="link"
             marginRight={{ base: "80px", sm: "120px" }}
             fontSize="lg"
-            fontWeight="normal"
             onClick={!user?.username ? openAuthModal : logOutUser}
             _focus={{ outline: "none" }}
+            color="black"
           >
             {!user?.username ? "Sign In" : "Sign Out"}
           </Button>

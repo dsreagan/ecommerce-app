@@ -19,6 +19,8 @@ const CategorySelector = ({ category, setCategory }: Props) => {
       variant="flushed"
       value={category}
       onChange={onSelectCategory}
+      color="black"
+      boxShadow="md"
     >
       <option value="men">Men</option>
       <option value="women">Women</option>

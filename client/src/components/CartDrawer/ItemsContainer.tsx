@@ -16,7 +16,7 @@ const CartItemsContainer = ({ onClose }: Props) => {
           <CartItemCard key={item.id} item={item} onClose={onClose} />
         ))
       ) : (
-        <Text>There are no items in your cart.</Text>
+        <Text fontSize="lg" marginY={3}>There are no items in your cart.</Text>
       )}
     </VStack>
   )

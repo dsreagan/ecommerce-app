@@ -29,6 +29,7 @@ const CartIcon = ({ onClick }: Props) => {
         size="md"
         zIndex="10"
         onClick={onClick}
+        color="black"
       />
       <Circle
         position="absolute"

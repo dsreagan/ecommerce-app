@@ -1,4 +1,10 @@
-import { Button, Card, Checkbox, Divider, Text, VStack } from "@chakra-ui/react"
+import {
+  Button,
+  Card,
+  Checkbox,
+  Divider, Text,
+  VStack
+} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import Address from "../../entities/Address"
 import PaymentDetails from "../../entities/PaymentDetails"
@@ -48,7 +54,14 @@ const PlaceOrder = ({
   }
 
   return (
-    <Card h="70vh" p={5} overflowY="scroll" textAlign="center">
+    <Card
+      h="70vh"
+      p={5}
+      overflowY="scroll"
+      textAlign="center"
+      bg="white"
+      color="black"
+    >
       <VStack spacing={5}>
         <PaymentForm
           invalidInput={error.element}
@@ -64,6 +77,7 @@ const PlaceOrder = ({
         <Checkbox
           isChecked={sameBilling}
           onChange={() => setSameBilling((prev) => !prev)}
+          colorScheme="blackAlpha"
         >
           Billing address same as shipping.
         </Checkbox>
@@ -77,8 +91,12 @@ const PlaceOrder = ({
             />
           </>
         )}
-        {error.active && <Text color="red.400">{error.message}</Text>}
-        <Button size={{ base: "md", sm: "lg" }} onClick={onSubmit}>
+        {error.active && <Text color="red">{error.message}</Text>}
+        <Button
+          size={{ base: "md", sm: "lg" }}
+          onClick={onSubmit}
+          variant="secondary"
+        >
           Place Order
         </Button>
       </VStack>

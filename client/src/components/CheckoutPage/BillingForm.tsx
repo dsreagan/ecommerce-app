@@ -1,6 +1,7 @@
 import { FormControl, Input, Text, VStack } from "@chakra-ui/react"
 import { ChangeEvent } from "react"
 import Address from "../../entities/Address"
+import inputStyles from "../../styles/inputStyles"
 
 interface Props {
   billingInfo: Address
@@ -20,7 +21,9 @@ const BillingForm = ({ billingInfo, setBillingInfo, invalidInput }: Props) => {
 
   return (
     <>
-      <Text fontSize="lg">Billing Address</Text>
+      <Text fontSize="lg" fontWeight="bold">
+        Billing Address
+      </Text>
       <FormControl>
         <VStack spacing={3}>
           <Input
@@ -29,6 +32,7 @@ const BillingForm = ({ billingInfo, setBillingInfo, invalidInput }: Props) => {
             value={billingInfo.streetAddr}
             onChange={handleChange}
             isInvalid={invalidInput === 10}
+            {...inputStyles}
           />
           <Input
             placeholder="City"
@@ -36,6 +40,7 @@ const BillingForm = ({ billingInfo, setBillingInfo, invalidInput }: Props) => {
             value={billingInfo.city}
             onChange={handleChange}
             isInvalid={invalidInput === 11}
+            {...inputStyles}
           />
           <Input
             placeholder="State"
@@ -43,6 +48,7 @@ const BillingForm = ({ billingInfo, setBillingInfo, invalidInput }: Props) => {
             value={billingInfo.state}
             onChange={handleChange}
             isInvalid={invalidInput === 12}
+            {...inputStyles}
           />
           <Input
             placeholder="Zip"
@@ -50,6 +56,7 @@ const BillingForm = ({ billingInfo, setBillingInfo, invalidInput }: Props) => {
             value={billingInfo.zip}
             onChange={handleChange}
             isInvalid={invalidInput === 13}
+            {...inputStyles}
           />
         </VStack>
       </FormControl>

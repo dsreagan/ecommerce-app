@@ -27,7 +27,7 @@ const CartDrawer = ({ isOpen, onClose }: Props) => {
   return (
     <Drawer isOpen={isOpen} onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent bg="whitesmoke">
         <DrawerCloseButton />
         <DrawerHeader>Your Cart</DrawerHeader>
         <DrawerBody>
@@ -40,9 +40,11 @@ const CartDrawer = ({ isOpen, onClose }: Props) => {
             </Text>
           </Flex>
           <HStack w="100%" justify="space-evenly">
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose} variant="secondary" size="lg">
+              Cancel
+            </Button>
             <Link to="/checkout">
-              <Button onClick={onClose}>
+              <Button onClick={onClose} variant="secondary" size="lg">
                 <HStack>
                   <ShoppingCartCheckout />
                   <Text>Check Out</Text>

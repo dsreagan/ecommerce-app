@@ -9,11 +9,12 @@ interface Props {
 
 const CartButtonGroup = ({ quantity, addAnotherToCart, subtractFromCart }: Props) => {
   return (
-    <HStack border="1px solid gray" borderRadius={5}>
+    <HStack border="1px solid black" borderRadius={5}>
       {quantity === 1 ? (
         <IconButton
           aria-label="Update cart"
           icon={<DeleteIcon />}
+          variant="primary"
           size="xs"
           borderRadius={5}
           onClick={() => subtractFromCart()}
@@ -22,16 +23,17 @@ const CartButtonGroup = ({ quantity, addAnotherToCart, subtractFromCart }: Props
         <IconButton
           aria-label="Update cart"
           icon={<MinusIcon />}
+          variant="primary"
           size="xs"
           borderRadius={5}
           onClick={() => subtractFromCart()}
         />
       )}
-
-      <Text>{quantity}</Text>
+      <Text color="black">{quantity}</Text>
       <IconButton
         aria-label="Update cart"
         icon={<AddIcon />}
+        variant="primary"
         size="xs"
         borderRadius={5}
         onClick={() => addAnotherToCart()}

@@ -1,6 +1,7 @@
 import { FormControl, HStack, Input, Text, VStack } from "@chakra-ui/react"
 import { ChangeEvent } from "react"
 import PaymentDetails from "../../entities/PaymentDetails"
+import inputStyles from "../../styles/inputStyles"
 
 interface Props {
   paymentInfo: PaymentDetails
@@ -20,7 +21,9 @@ const PaymentForm = ({ paymentInfo, setPaymentInfo, invalidInput }: Props) => {
 
   return (
     <>
-      <Text fontSize="lg">Enter Payment Details</Text>
+      <Text fontSize="lg" fontWeight="bold">
+        Enter Payment Details
+      </Text>
       <FormControl>
         <VStack spacing={3}>
           <Input
@@ -29,6 +32,7 @@ const PaymentForm = ({ paymentInfo, setPaymentInfo, invalidInput }: Props) => {
             value={paymentInfo.name}
             onChange={handleChange}
             isInvalid={invalidInput === 1}
+            {...inputStyles}
           />
           <Input
             placeholder="Email"
@@ -36,6 +40,7 @@ const PaymentForm = ({ paymentInfo, setPaymentInfo, invalidInput }: Props) => {
             value={paymentInfo.email}
             onChange={handleChange}
             isInvalid={invalidInput === 2}
+            {...inputStyles}
           />
           <Input
             placeholder="Card Number"
@@ -43,6 +48,7 @@ const PaymentForm = ({ paymentInfo, setPaymentInfo, invalidInput }: Props) => {
             value={paymentInfo.cardNumber}
             onChange={handleChange}
             isInvalid={invalidInput === 3}
+            {...inputStyles}
           />
           <HStack>
             <Input
@@ -51,6 +57,7 @@ const PaymentForm = ({ paymentInfo, setPaymentInfo, invalidInput }: Props) => {
               value={paymentInfo.cvv}
               onChange={handleChange}
               isInvalid={invalidInput === 4}
+              {...inputStyles}
             />
             <Input
               placeholder="Exp Date: mm/yy"
@@ -58,6 +65,7 @@ const PaymentForm = ({ paymentInfo, setPaymentInfo, invalidInput }: Props) => {
               value={paymentInfo.expDate}
               onChange={handleChange}
               isInvalid={invalidInput === 5}
+              {...inputStyles}
             />
           </HStack>
         </VStack>

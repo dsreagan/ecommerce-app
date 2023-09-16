@@ -17,6 +17,7 @@ import {
   useState,
 } from "react"
 import AuthInput from "../../entities/AuthInput"
+import inputStyles from "../../styles/inputStyles"
 
 interface Props {
   setAction: Dispatch<SetStateAction<"register" | "login">>
@@ -74,7 +75,7 @@ export default function AuthModalRegister({
   }
 
   return (
-    <ModalContent alignItems="center">
+    <ModalContent alignItems="center" bg="whitesmoke" color="black">
       <ModalHeader>Create Your Account</ModalHeader>
       <FormControl>
         <ModalBody textAlign="center">
@@ -88,6 +89,7 @@ export default function AuthModalRegister({
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               isInvalid={usernameError}
+              {...inputStyles}
             />
             <Input
               id="email"
@@ -97,6 +99,7 @@ export default function AuthModalRegister({
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               isInvalid={emailError}
+              {...inputStyles}
             />
             <Input
               id="password"
@@ -107,6 +110,7 @@ export default function AuthModalRegister({
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               isInvalid={passwordError}
+              {...inputStyles}
             />
             <Input
               id="password2"
@@ -117,22 +121,23 @@ export default function AuthModalRegister({
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               isInvalid={passwordError}
+              {...inputStyles}
             />
-            {usernameError && (
-              <Text color="red.300">Please enter a username</Text>
-            )}
+            {usernameError && <Text color="red">Please enter a username</Text>}
             {emailError && (
-              <Text color="red.300">Please enter a valid email address</Text>
+              <Text color="red">Please enter a valid email address</Text>
             )}
             {passwordError && (
-              <Text color="red.300">Please enter matching passwords</Text>
+              <Text color="red">Please enter matching passwords</Text>
             )}
-            <Text color="red.300">{responseErrorMessage}</Text>
+            <Text color="red">{responseErrorMessage}</Text>
           </VStack>
         </ModalBody>
         <ModalFooter justifyContent="center">
           <VStack>
-            <Button onClick={handleSubmit}>Register</Button>
+            <Button onClick={handleSubmit} variant="secondary">
+              Register
+            </Button>
             <Text>
               Already have an account?{" "}
               <Button
@@ -141,6 +146,7 @@ export default function AuthModalRegister({
                   setResponseErrorMessage("")
                   setAction("login")
                 }}
+                color="blue.500"
               >
                 Sign In
               </Button>

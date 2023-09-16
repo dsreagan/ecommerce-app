@@ -10,7 +10,6 @@ const ProductCardContainer = ({ children }: Props) => {
     <Box
       width="100%"
       borderRadius={3}
-      overflow="hidden"
       _hover={{
         transform: "scale(1.03)",
         transition: "transform .15s ease-in",

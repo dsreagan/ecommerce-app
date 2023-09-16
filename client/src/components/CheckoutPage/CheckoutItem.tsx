@@ -11,6 +11,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
+import { ChangeEvent, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import CartItem from "../../entities/CartItem"
 
@@ -19,6 +20,16 @@ interface Props {
 }
 
 const CheckoutItem = ({ item }: Props) => {
+  const [newValue, setNewValue] = useState(item.quantity)
+
+  useEffect(() => {
+    console.log(newValue)
+  })
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewValue(parseInt(event.target.value))
+  }
+
   return (
     <>
       <Flex justify="space-between">
@@ -40,7 +51,10 @@ const CheckoutItem = ({ item }: Props) => {
             <Text>{"x "}</Text>
             <Editable opacity={0.8} defaultValue={item.quantity.toString()}>
               <EditablePreview />
-              <EditableInput />
+              <EditableInput
+                value={newValue}
+                onChange={handleChange}
+              />
             </Editable>
           </HStack>
           <Divider />

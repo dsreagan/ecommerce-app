@@ -24,8 +24,8 @@ const AddToCartSection = ({ product }: Props) => {
         />
         {addedToCart && (
           <HStack pos="absolute" bottom={2}>
-            <CheckIcon />
-            <Text fontSize="xl">Added</Text>
+            <CheckIcon color="green.500" />
+            <Text fontSize="xl" color="black">Added</Text>
           </HStack>
         )}
       </VStack>
