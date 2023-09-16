@@ -34,7 +34,7 @@ export default function AuthModal({ isOpen, onClose }: Props) {
             username: res.username,
             email: res.email,
             isAdmin: res.isAdmin,
-            accessToken: res.accessTokens,
+            accessToken: res.accessToken,
           })
           onClose()
         }
