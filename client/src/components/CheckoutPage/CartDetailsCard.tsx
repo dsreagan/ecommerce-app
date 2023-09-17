@@ -17,7 +17,7 @@ const CheckoutDetailsCard = () => {
         {cart.items.length > 0 ? (
           cart.items.map((item) => <CheckoutItem item={item} />)
         ) : (
-          <Heading alignSelf="center" fontWeight="normal" opacity={0.8}>
+          <Heading alignSelf="center" fontWeight="normal" opacity={0.8} m={5}>
             There are no items in your cart.
           </Heading>
         )}

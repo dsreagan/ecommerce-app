@@ -15,7 +15,6 @@ const CheckoutPage = () => {
     cvv: "",
     expDate: "",
   })
-
   const [billingInfo, setBillingInfo] = useState({
     streetAddr: "",
     city: "",
@@ -28,7 +27,6 @@ const CheckoutPage = () => {
     state: "",
     zip: "",
   })
-
 
   return (
     <Flex justify="center" align="center" paddingTop={150}>

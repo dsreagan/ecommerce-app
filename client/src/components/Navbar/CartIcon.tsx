@@ -30,6 +30,7 @@ const CartIcon = ({ onClick }: Props) => {
         zIndex="10"
         onClick={onClick}
         color="black"
+        _hover={{ bg: "transparent" }}
       />
       <Circle
         position="absolute"
