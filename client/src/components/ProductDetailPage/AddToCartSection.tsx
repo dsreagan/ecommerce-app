@@ -17,7 +17,7 @@ const AddToCartSection = ({ product }: Props) => {
 
   return (
     <Center h="100%" w="100%" position="relative">
-      <VStack>
+      <VStack paddingBottom={10}>
         <AddMultipleButtonGroup
           product={product}
           setAddedToCart={setAddedToCart}

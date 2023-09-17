@@ -28,10 +28,17 @@ export default function Layout() {
 
   useEffect(() => {
     try {
-      const savedUser = JSON.parse(localStorage.getItem("user"))
-      setUser(savedUser)
-      const savedCart = JSON.parse(localStorage.getItem("cart"))
-      setCart(savedCart)
+      const savedUser = JSON.parse(localStorage.getItem("user")!)
+      if (savedUser?.username) setUser(savedUser)
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      const savedCart = JSON.parse(localStorage.getItem("cart")!)
+      if (savedCart.items.length > 0) setCart(savedCart)
     } catch (error) {
       console.log(error)
     }
@@ -40,9 +47,11 @@ export default function Layout() {
   useEffect(() => {
     if (user?.username) localStorage.setItem("user", JSON.stringify(user))
     else localStorage.removeItem("user")
-    if (cart.items.length > 0)
-      localStorage.setItem("cart", JSON.stringify(cart))
-  }, [user, cart])
+  }, [user])
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }, [cart])
 
   return (
     <>

@@ -1,6 +1,7 @@
-import { Card, Center, Grid, GridItem } from "@chakra-ui/react"
+import { Flex, Grid, GridItem } from "@chakra-ui/react"
 import { useState } from "react"
 import CartDetailsCard from "../components/CheckoutPage/CartDetailsCard"
+import OrderCard from "../components/CheckoutPage/OrderCard"
 import CheckoutCard from "../components/CheckoutPage/PlaceOrderCard"
 
 const CheckoutPage = () => {
@@ -30,7 +31,7 @@ const CheckoutPage = () => {
 
 
   return (
-    <Center paddingTop={150}>
+    <Flex justify="center" align="center" paddingTop={150}>
       {!orderPlaced ? (
         <Grid gridTemplateColumns={{ lg: "3fr 1.5fr" }} w="90vw" gap={25}>
           <GridItem>
@@ -48,9 +49,9 @@ const CheckoutPage = () => {
           </GridItem>
         </Grid>
       ) : (
-        <Card h="70vh" p={5}>Thanks for your order...</Card>
+        <OrderCard />
       )}
-    </Center>
+    </Flex>
   )
 }
 

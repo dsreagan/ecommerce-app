@@ -6,7 +6,13 @@ const CheckoutDetailsCard = () => {
   const { cart } = useLamaStore()
 
   return (
-    <Card h="70vh" p="20px" overflowY="scroll" bg="white" color="black">
+    <Card
+      maxHeight={{ base: "40vh", md: "70vh" }}
+      p="20px"
+      overflowY="scroll"
+      bg="white"
+      color="black"
+    >
       <Flex gap={3} direction="column">
         {cart.items.length > 0 ? (
           cart.items.map((item) => <CheckoutItem item={item} />)

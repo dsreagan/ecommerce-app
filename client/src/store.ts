@@ -12,6 +12,7 @@ interface LamaStore {
   onAddAnotherToCart: (item: CartItem) => void
   subtractFromCart: (item: CartItem) => void
   removeFromCart: (item: CartItem) => void
+  discountCart: () => void
 }
 
 const useStore = create<LamaStore>((set) => ({
@@ -23,9 +24,6 @@ const useStore = create<LamaStore>((set) => ({
     set((store) => ({
       ...store,
       cart: {
-        total: store.user?.username
-          ? store.cart.total + (item.price - item.price * 0.2)
-          : store.cart.total + item.price,
         items: [
           ...store.cart.items,
           {
@@ -42,36 +40,50 @@ const useStore = create<LamaStore>((set) => ({
             quantity: 1,
           },
         ],
+        total: store.user?.username
+          ? store.cart.total + (item.price - item.price * 0.2)
+          : store.cart.total + item.price,
       },
     })),
   onAddAnotherToCart: (item) =>
     set((store) => ({
       ...store,
       cart: {
-        total: store.user?.username
-          ? store.cart.total + (item.price - item.price * 0.2)
-          : store.cart.total + item.price,
         items: store.cart.items.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : { ...i }
         ),
+        total: store.user?.username
+          ? store.cart.total + (item.price - item.price * 0.2)
+          : store.cart.total + item.price,
       },
     })),
   subtractFromCart: (item) =>
     set((store) => ({
       ...store,
       cart: {
-        total: store.cart.total - item.price,
         items: store.cart.items.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity - 1 } : { ...i }
         ),
+        total: store.cart.total - item.price,
       },
     })),
   removeFromCart: (item) =>
     set((store) => ({
       ...store,
       cart: {
-        total: store.cart.total - item.price * item.quantity,
         items: store.cart.items.filter((i) => i.id !== item.id),
+        total: store.cart.total - item.price * item.quantity,
+      },
+    })),
+  discountCart: () =>
+    set((store) => ({
+      ...store,
+      cart: {
+        items: store.cart.items.map((i) => ({
+          ...i,
+          price: i.price - i.price * 0.2,
+        })),
+        total: store.cart.total - store.cart.total * 0.2,
       },
     })),
 }))

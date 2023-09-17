@@ -1,11 +1,10 @@
+import CartItem from "./CartItem"
+import Address from "./Address"
+
 export default interface Order {
   id: string
-  userId: string
-  products: {
-    productId: string
-    quantity: number
-  }[]
-  amount: number
-  //address: {} //find out what this object looks like
+  items: CartItem[]
+  total: number
+  address: Address
   status: string
 }

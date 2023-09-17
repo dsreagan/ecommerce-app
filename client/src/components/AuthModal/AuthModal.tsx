@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function AuthModal({ isOpen, onClose }: Props) {
-  const setUser = useLamaStore((s) => s.setUser)
+  const { setUser, discountCart } = useLamaStore()
   const [action, setAction] = useState<"register" | "login">("login")
   const [submit, setSubmit] = useState(false)
   const [input, setInput] = useState<AuthInput>({} as AuthInput)
@@ -37,10 +37,11 @@ export default function AuthModal({ isOpen, onClose }: Props) {
             accessToken: res.accessToken,
           })
           onClose()
+          discountCart()
         }
       })
     }
-  }, [submit, action, input, setUser, onClose])
+  }, [submit, action, input, setUser, onClose, discountCart])
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md" isCentered>

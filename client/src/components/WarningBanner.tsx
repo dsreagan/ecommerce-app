@@ -13,6 +13,7 @@ const WarningBanner = () => {
           href="https://dsreagan.com"
           target="_blank"
           fontSize={{ base: "xs", md: "md" }}
+          color="whitesmoke"
         >
           Daniel Reagan
         </Button>
