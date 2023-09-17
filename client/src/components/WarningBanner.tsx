@@ -1,10 +1,10 @@
-import { WarningIcon } from "@chakra-ui/icons"
+import { WarningTwoIcon } from "@chakra-ui/icons"
 import { Button, HStack, Text } from "@chakra-ui/react"
 
 const WarningBanner = () => {
   return (
     <HStack paddingX={3} bg="red.500">
-      <WarningIcon color="whitesmoke" />
+      <WarningTwoIcon color="whitesmoke" />
       <Text color="whitesmoke" fontSize={{ base: "xs", md: "md" }}>
         Hot lama is not a real shop. It is a project made by{" "}
         <Button

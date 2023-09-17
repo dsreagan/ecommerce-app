@@ -1,9 +1,18 @@
-import { Button, Flex, Grid, GridItem, Heading, Show } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
+import {
+  Button,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  HStack,
+  Show,
+  Text,
+} from "@chakra-ui/react"
+// import { Link } from "react-router-dom"
 import User from "../../entities/User"
 import useLamaStore from "../../store"
 import CartIcon from "./CartIcon"
-import Logo from "./Logo"
+import SearchBar from "./SearchBar"
 
 interface Props {
   openAuthModal: () => void
@@ -19,19 +28,17 @@ const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
   return (
     <Grid
       templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
-      paddingX={{ base: "5px", sm: "10px" }}
       bg="white"
       h="70px"
       w="100%"
       boxShadow="0 2px 4px 0 rgba(0,0,0,.2)"
     >
       <Show above="sm">
-        <GridItem justifyContent="center">
-          <Flex h="100%" align="center" marginLeft={5}>
-            <button onClick={openLogoModal}>
-              <Logo />
-            </button>
-          </Flex>
+        <GridItem>
+          <HStack w="100%" h="100%" marginLeft={5}>
+            <Text>EN</Text>
+            <SearchBar />
+          </HStack>
         </GridItem>
       </Show>
       <GridItem>
@@ -41,9 +48,12 @@ const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
           h="100%"
           w="100%"
         >
-          <Heading size="lg" color="black">
-            <Link to="/">hot lama</Link>
-          </Heading>
+          <Button onClick={openLogoModal}>
+            <Heading size="lg" color="black">
+              {/* <Link to="/">hot lama</Link> */}
+              hot lama
+            </Heading>
+          </Button>
         </Flex>
       </GridItem>
       <GridItem>

@@ -11,31 +11,33 @@ const ProductDetailCard = ({ product }: Props) => {
   return (
     <Card bg="white" borderRadius={5}>
       <Grid
-        height={{ base: "300px", md: "450px" }}
-        width={{ md: "900px" }}
-        gridTemplateAreas={`"i t" "i d" "i b"`}
+        maxHeight={{ base: "350px", md: "450px" }}
+        minHeight="300px"
+        width={{ lg: "900px" }}
+        gridTemplateAreas={`"i t" "i b" "d d"`}
         gridTemplateColumns="0.8fr 1.2fr"
-        gridTemplateRows="0.8fr 1.2fr 1fr"
+        gridTemplateRows="0.8fr 1fr 1.2fr"
       >
         <GridItem area="i" alignItems="start">
           <ProductImage image={product.image} />
         </GridItem>
         <GridItem area="t" paddingX={5} paddingY={1}>
-          <Heading
-            fontSize={{ base: "xl", md: "3xl" }}
-            fontWeight="normal"
-            color="black"
-          >
+          <Heading fontSize={{ base: "xl", md: "3xl" }} color="black">
             {product.title}
           </Heading>
         </GridItem>
-        <GridItem area="d" paddingX={5}>
-          <Text fontSize="lg" color="black">
-            {product.description}
-          </Text>
-        </GridItem>
         <GridItem area="b">
           <AddToCartSection product={product} />
+        </GridItem>
+        <GridItem
+          area="d"
+          paddingY={{base: "2", md: "4"}}
+          paddingX={2}
+          overflowY="auto"
+        >
+          <Text color="black" opacity={0.9} fontSize={{base: "sm", md: "md"}}>
+            {product.description}
+          </Text>
         </GridItem>
       </Grid>
     </Card>

@@ -28,7 +28,14 @@ const CartItemCard = ({ item, onClose }: Props) => {
   })
 
   return (
-    <Card w="100%" pos="relative" paddingTop={5} paddingBottom={3} paddingX={1} bg="white">
+    <Card
+      w="100%"
+      pos="relative"
+      paddingTop={5}
+      paddingBottom={3}
+      paddingX={1}
+      bg="white"
+    >
       <IconButton
         icon={<CloseIcon fontSize="8px" />}
         aria-label="Remove from cart"
@@ -42,7 +49,7 @@ const CartItemCard = ({ item, onClose }: Props) => {
       />
       <HStack w="100%">
         <Image src={item.image} borderRadius={5} w="45px" />
-        <VStack gap={5} paddingLeft={2} w="100%" align="start">
+        <VStack gap={5} paddingLeft={2} w="80%" align="start" overflow="hidden">
           <Button p={0} onClick={onClose} variant="link">
             <Text fontSize="lg" color="black">
               <Link to={"/products/" + item.id}>{item.title}</Link>

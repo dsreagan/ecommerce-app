@@ -9,7 +9,7 @@ const CheckoutDetailsCard = () => {
     <Card
       maxHeight={{ base: "40vh", md: "70vh" }}
       p="20px"
-      overflowY="scroll"
+      overflowY="auto"
       bg="white"
       color="black"
     >

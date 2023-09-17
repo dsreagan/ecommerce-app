@@ -17,13 +17,13 @@ const AddToCartSection = ({ product }: Props) => {
 
   return (
     <Center h="100%" w="100%" position="relative">
-      <VStack paddingBottom={10}>
+      <VStack paddingBottom={{base: "10", md: "6"}}>
         <AddMultipleButtonGroup
           product={product}
           setAddedToCart={setAddedToCart}
         />
         {addedToCart && (
-          <HStack pos="absolute" bottom={2}>
+          <HStack pos="absolute" bottom={0}>
             <CheckIcon color="green.500" />
             <Text fontSize="xl" color="black">Added</Text>
           </HStack>

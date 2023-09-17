@@ -46,7 +46,7 @@ const LogoModal = ({ isOpen, onClose }: Props) => {
                 <Image src={Ana} borderRadius={5} />
                 <Text color="blue.400" fontSize="2xl">
                   {
-                    "For believing in me : ) and being there for me, you're an incredible person."
+                    "For believing in me : ) and being there for me. You're an incredible person."
                   }
                 </Text>
                 <IconButton

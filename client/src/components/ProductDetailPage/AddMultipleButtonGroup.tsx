@@ -46,13 +46,13 @@ const AddMultipleButtonGroup = ({ product, setAddedToCart }: Props) => {
   }
 
   return (
-    <VStack gap={{ base: 2, md: 4 }} position="relative">
+    <VStack gap={4} position="relative">
       <HStack border="1px solid black" borderRadius={5}>
         <IconButton
           aria-label="Update cart"
           icon={<MinusIcon />}
           variant="primary"
-          size={{ base: "sm", md: "md" }}
+          size={{ base: "xs", md: "sm" }}
           onClick={() => setQuantity((prev) => prev - 1)}
           isDisabled={quantity <= 1}
         />
@@ -65,13 +65,13 @@ const AddMultipleButtonGroup = ({ product, setAddedToCart }: Props) => {
           aria-label="Update cart"
           icon={<AddIcon />}
           variant="primary"
-          size={{ base: "sm", md: "md" }}
+          size={{ base: "xs", md: "sm" }}
           onClick={() => setQuantity((prev) => prev + 1)}
         />
       </HStack>
-      <Button onClick={onAddToCart} variant="secondary">
+      <Button onClick={onAddToCart} variant="secondary" size={{base: "sm", md: "md"}}>
         <HStack>
-          <Text fontSize={{ md: "xl" }}>Add To Cart</Text>
+          <Text fontSize={{ md: "lg" }}>Add To Cart</Text>
           <ShoppingCartOutlined />
         </HStack>
       </Button>

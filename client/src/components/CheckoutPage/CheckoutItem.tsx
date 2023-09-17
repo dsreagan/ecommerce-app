@@ -51,13 +51,10 @@ const CheckoutItem = ({ item }: Props) => {
             <Text>{"x "}</Text>
             <Editable opacity={0.8} defaultValue={item.quantity.toString()}>
               <EditablePreview />
-              <EditableInput
-                value={newValue}
-                onChange={handleChange}
-              />
+              <EditableInput value={newValue} onChange={handleChange} />
             </Editable>
           </HStack>
-          <Divider />
+          <Divider border="1px solid gray" opacity={0.4} />
           <Text fontWeight="bold" fontSize="lg">
             ${item.quantity * item.price}
           </Text>

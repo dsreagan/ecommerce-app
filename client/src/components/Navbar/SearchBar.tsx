@@ -28,11 +28,12 @@ const SearchBar = () => {
         value={searchInput}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
+        bg="blackAlpha.200"
       />
       <InputRightElement>
         <IconButton
           aria-label="Search Products"
-          icon={<SearchIcon />}
+          icon={<SearchIcon color="blackAlpha.500" />}
           variant="ghost"
           size="xs"
           onClick={handleSearch}
