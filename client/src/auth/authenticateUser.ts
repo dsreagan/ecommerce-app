@@ -14,7 +14,7 @@ const authenticateUser = async (input: AuthInput, action: string) => {
       config = {
         method: "post",
         maxBodyLength: Infinity,
-        url: "https://hot-lama-api.onrender.com/api/auth/login",
+        url: "http://web-server-alb-160962343.us-east-1.elb.amazonaws.com/api/auth/login",
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,8 +32,8 @@ const authenticateUser = async (input: AuthInput, action: string) => {
       config = {
         method: "post",
         maxBodyLength: Infinity,
-        // url: "https://hot-lama-api.onrender.com/api/auth/register",
-        url: "http://localhost:5000/api/auth/register",
+        url: "http://web-server-alb-160962343.us-east-1.elb.amazonaws.com/api/auth/register",
+        // url: "http://localhost:5000/api/auth/register",
         headers: {
           "Content-Type": "application/json",
         },

@@ -8,7 +8,7 @@ const HomePage = () => {
   const [category, setCategory] = useState("")
 
   return (
-    <Box paddingY={95}>
+    <Box paddingY="76px">
       <HeroSlider />
       <Flex w="100%" paddingX="20px" direction="column" gap={4}>
         <CategorySelector category={category} setCategory={setCategory} />

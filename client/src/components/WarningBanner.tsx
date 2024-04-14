@@ -6,7 +6,7 @@ const WarningBanner = () => {
     <HStack paddingX={3} bg="red.500">
       <WarningTwoIcon color="whitesmoke" />
       <Text color="whitesmoke" fontSize={{ base: "xs", md: "md" }}>
-        Hot lama is not a real shop. It is a project made by{" "}
+        This is a shopping experience project made by{" "}
         <Button
           variant="link"
           as="a"
@@ -17,7 +17,7 @@ const WarningBanner = () => {
         >
           Daniel Reagan
         </Button>
-        . No payment information will be saved.
+        , it is not a real shop. No payment or personal information will be saved.
       </Text>
     </HStack>
   )

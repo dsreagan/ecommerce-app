@@ -4,7 +4,7 @@ const getProducts = async () => {
   const config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "https://hot-lama-api.onrender.com/api/products/all",
+    url: "http://web-server-alb-160962343.us-east-1.elb.amazonaws.com/api/products/all",
     headers: {
       "Content-Type": "application/json",
     },

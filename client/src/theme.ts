@@ -52,7 +52,7 @@ const theme = extendTheme({
       },
       option: {
         backgoundColor: "white",
-        color: "white",
+        color: "black",
       },
     }),
   },

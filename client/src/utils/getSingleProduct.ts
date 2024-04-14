@@ -5,7 +5,7 @@ const getSingleProduct = async (id: string | undefined) => {
   const config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `https://hot-lama-api.onrender.com/api/products/find/${id}`,
+    url: `http://web-server-alb-160962343.us-east-1.elb.amazonaws.com/api/products/find/${id}`,
     headers: {
       "Content-Type": "application/json",
     },

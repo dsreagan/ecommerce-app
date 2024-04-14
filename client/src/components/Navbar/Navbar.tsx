@@ -1,78 +1,58 @@
 import {
   Button,
   Flex,
-  Grid,
-  GridItem,
-  Heading,
   HStack,
-  Show,
-  Text,
+  Text
 } from "@chakra-ui/react"
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import User from "../../entities/User"
 import useLamaStore from "../../store"
 import CartIcon from "./CartIcon"
-import SearchBar from "./SearchBar"
+// import SearchBar from "./SearchBar"
 
 interface Props {
   openAuthModal: () => void
   openCartDrawer: () => void
-  openLogoModal: () => void
 }
 
-const Navbar = ({ openAuthModal, openCartDrawer, openLogoModal }: Props) => {
+const Navbar = ({ openAuthModal, openCartDrawer }: Props) => {
   const { user, setUser } = useLamaStore()
 
   const logOutUser = () => setUser({} as User)
 
   return (
-    <Grid
-      templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
+    <Flex
+      justify="space-between"
       bg="white"
-      h="70px"
+      h="50px"
       w="100%"
       boxShadow="0 2px 4px 0 rgba(0,0,0,.2)"
     >
-      <Show above="sm">
-        <GridItem>
-          <HStack w="100%" h="100%" marginLeft={5}>
-            <Text>EN</Text>
-            <SearchBar />
+        <Link to="/">
+          <HStack gap="3px" h="100%" mt="8px" ml="15px" justify="flex-end" >
+            <Text fontSize="34px" as="b" color="black">
+              hot
+            </Text>
+            <Text fontSize="36px" color="black">
+              lama
+            </Text>
           </HStack>
-        </GridItem>
-      </Show>
-      <GridItem>
-        <Flex
-          justify={{ base: "start", sm: "center" }}
-          align="center"
-          h="100%"
-          w="100%"
+        </Link>
+      <Flex justify="end" align="end" mb="2px">
+        <Button
+          size="sm"
+          variant="link"
+          marginRight="90px"
+          fontSize="lg"
+          onClick={!user?.username ? openAuthModal : logOutUser}
+          _focus={{ outline: "none" }}
+          color="black"
         >
-          <Button onClick={openLogoModal}>
-            <Heading size="lg" color="black">
-              {/* <Link to="/">hot lama</Link> */}
-              hot lama
-            </Heading>
-          </Button>
-        </Flex>
-      </GridItem>
-      <GridItem>
-        <Flex justify="end" align="center" h="100%" w="100%">
-          <Button
-            size="sm"
-            variant="link"
-            marginRight={{ base: "80px", sm: "120px" }}
-            fontSize="lg"
-            onClick={!user?.username ? openAuthModal : logOutUser}
-            _focus={{ outline: "none" }}
-            color="black"
-          >
-            {!user?.username ? "Sign In" : "Sign Out"}
-          </Button>
-          <CartIcon onClick={openCartDrawer} />
-        </Flex>
-      </GridItem>
-    </Grid>
+          {!user?.username ? "Sign In" : "Sign Out"}
+        </Button>
+        <CartIcon onClick={openCartDrawer} />
+      </Flex>
+    </Flex>
   )
 }
 

@@ -21,8 +21,8 @@ const CartIcon = ({ onClick }: Props) => {
     <Box overflow="visible" position="relative">
       <IconButton
         position="absolute"
-        top={-5}
-        right={{ base: "6", sm: "14" }}
+        top="-8"
+        right="7"
         aria-label="Go to cart"
         icon={<ShoppingCartOutlined />}
         variant="ghost"
@@ -34,8 +34,8 @@ const CartIcon = ({ onClick }: Props) => {
       />
       <Circle
         position="absolute"
-        top={-6}
-        right={{ base: "6", sm: "14" }}
+        top="-8"
+        right="7"
         size="15px"
         zIndex="0"
         bg="yellow"

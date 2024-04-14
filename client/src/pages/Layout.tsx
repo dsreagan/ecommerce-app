@@ -3,7 +3,6 @@ import { useEffect } from "react"
 import { Outlet } from "react-router-dom"
 import AuthModal from "../components/AuthModal/AuthModal"
 import CartDrawer from "../components/CartDrawer/CartDrawer"
-import LogoModal from "../components/LogoModal"
 import Navbar from "../components/Navbar/Navbar"
 import WarningBanner from "../components/WarningBanner"
 import useLamaStore from "../store"
@@ -20,11 +19,7 @@ export default function Layout() {
     onClose: closeCartDrawer,
     onOpen: openCartDrawer,
   } = useDisclosure()
-  const {
-    isOpen: logoModalOpen,
-    onClose: closeLogoModal,
-    onOpen: openLogoModal,
-  } = useDisclosure()
+  
 
   useEffect(() => {
     try {
@@ -60,11 +55,9 @@ export default function Layout() {
         <Navbar
           openAuthModal={openAuthModal}
           openCartDrawer={openCartDrawer}
-          openLogoModal={openLogoModal}
         />
       </Box>
       <Outlet />
-      <LogoModal isOpen={logoModalOpen} onClose={closeLogoModal} />
       <AuthModal isOpen={isAuthModelOpen} onClose={closeAuthModal} />
       <CartDrawer isOpen={isCartDrawerOpen} onClose={closeCartDrawer} />
     </>
