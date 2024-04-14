@@ -24,6 +24,6 @@ app.use("/api/products", productRoute)
 app.use("/api/carts", cartRoute)
 app.use("/api/orders", orderRoute)
 
-app.listen(process.env.PORT || 443, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Server running.")
 })
